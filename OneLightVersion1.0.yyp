@@ -31,6 +31,14 @@
     },
     "resources": [
         {
+            "Key": "0c3c2000-39b4-4601-8057-0981192ed97f",
+            "Value": {
+                "id": "ad967032-a703-4a83-8ff6-efd38a376d43",
+                "resourcePath": "sprites\\sMenuArrowRight\\sMenuArrowRight.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "0f971a45-9f6c-4251-b2f5-478b69964d40",
             "Value": {
                 "id": "420c4ebe-131b-4f52-8a4a-ea8593066bc7",
@@ -71,14 +79,6 @@
             }
         },
         {
-            "Key": "3a6d745b-03dd-4325-9ff2-9407d64f768c",
-            "Value": {
-                "id": "810389b7-d7f2-4885-a1e4-5e256160b583",
-                "resourcePath": "fonts\\ChooseCuesor\\ChooseCuesor.yy",
-                "resourceType": "GMFont"
-            }
-        },
-        {
             "Key": "46dba027-4871-488c-a722-17dc8b4cdc45",
             "Value": {
                 "id": "7562ab75-8896-4c62-ab41-c6d3d3d29c36",
@@ -108,6 +108,14 @@
                 "id": "25d163a7-5daf-47ab-af51-8ced0027e213",
                 "resourcePath": "views\\6e4edeb0-a6c7-4941-902e-82f03b82b458.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "72c99389-6c59-40ea-a6cb-bfabb15f2f7f",
+            "Value": {
+                "id": "f64b75f6-2097-4177-94b2-254a948c46f0",
+                "resourcePath": "sprites\\MenuOptionBackground\\MenuOptionBackground.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -183,14 +191,6 @@
             }
         },
         {
-            "Key": "c22e6fa1-75af-4e6f-95a0-db248789e77c",
-            "Value": {
-                "id": "6bb603a3-c828-4438-bdc1-53916f7b84fe",
-                "resourcePath": "fonts\\MainMenuF\\MainMenuF.yy",
-                "resourceType": "GMFont"
-            }
-        },
-        {
             "Key": "cc98d028-7bdd-4680-85f3-c87a7baa481e",
             "Value": {
                 "id": "a969b10f-8a71-42f3-a56a-83282e9bf7d0",
@@ -234,15 +234,23 @@
             "Key": "e9dbcbc6-561a-4982-b7ba-378a6c1b9efb",
             "Value": {
                 "id": "72346f28-81ff-4a61-9c01-7062433ff563",
-                "resourcePath": "sprites\\sButtonTiles\\sButtonTiles.yy",
+                "resourcePath": "sprites\\sTiles\\sTiles.yy",
                 "resourceType": "GMSprite"
             }
         },
         {
-            "Key": "fcec87c5-7322-464c-a5c5-9a9b17ac323a",
+            "Key": "fd42a8c1-629f-4e1b-bb1e-7e1e35c811e1",
             "Value": {
-                "id": "6f4475c1-e090-48fa-b387-96fbe2011ef2",
-                "resourcePath": "sprites\\sprite1\\sprite1.yy",
+                "id": "e1962e1c-12b5-4a62-8082-040e237544c6",
+                "resourcePath": "sprites\\sTilesTwo\\sTilesTwo.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "fd9a98ef-cd3a-44b3-90b3-1fea5b6a6f47",
+            "Value": {
+                "id": "67638a01-6a7c-4a8c-907c-6c071dc1daff",
+                "resourcePath": "sprites\\sMenuArrowLeft\\sMenuArrowLeft.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -252,6 +260,14 @@
                 "id": "3e2af16d-8c54-4e69-a3ba-9c3dc70e2cf3",
                 "resourcePath": "views\\fea18fc0-3be9-4c7d-9e5b-497a0f025419.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "ff08ea4f-3913-4448-87af-de83d59840aa",
+            "Value": {
+                "id": "786cbe95-fa9a-407a-8298-470fd24be960",
+                "resourcePath": "datafiles_yy\\EquipmentPro.ttf.yy",
+                "resourceType": "GMIncludedFile"
             }
         },
         {

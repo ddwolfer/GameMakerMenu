@@ -2,7 +2,7 @@
     "id": "e9dbcbc6-561a-4982-b7ba-378a6c1b9efb",
     "modelName": "GMSprite",
     "mvc": "1.12",
-    "name": "sButtonTiles",
+    "name": "sTiles",
     "For3D": false,
     "HTile": false,
     "VTile": false,
