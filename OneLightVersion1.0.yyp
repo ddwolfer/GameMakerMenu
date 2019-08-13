@@ -175,6 +175,14 @@
             }
         },
         {
+            "Key": "a4c78e9a-a226-4170-8e83-6d885fd52cfd",
+            "Value": {
+                "id": "7608b8cd-36b5-4b3a-80e4-d7959b4607ea",
+                "resourcePath": "sprites\\sback\\sback.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "a7f92067-9ea1-4762-be27-9b07e9922c03",
             "Value": {
                 "id": "a97eff43-9af7-445b-86a6-8809ed1a9e3b",

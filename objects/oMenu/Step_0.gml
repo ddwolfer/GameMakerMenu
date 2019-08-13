@@ -48,11 +48,69 @@ switch(menuScreen){
 		break
 		
 	case menuScreen.option:
-		if(upMenu){
-			window_set_size(640,360)
-		}else if(downMenu){
-			window_set_size(1920,1080)
-		}
+		
+		if ( mouse_check_button_pressed(mb_left) ){
+			var WMX = window_mouse_get_x() //滑鼠X
+			var WMY = window_mouse_get_y() //滑鼠Y
+			#region resolution
+			//left arrow
+			if( (WMX >= 320*windowsSize && WMX <= 342*windowsSize ) && 
+			    (WMY >= 55.6*windowsSize && WMY <= 76.6*windowsSize) ){
+					show_debug_message("left click")
+					show_debug_message(string(windowsSize))
+				switch(windowsSize){
+					case 1:
+						window_set_size(1920,1080)
+						windowsSize=3
+						break
+					case 2:
+						window_set_size(640,360)
+						windowsSize=1
+						break
+					case 2.25:
+						window_set_size(1280,720)
+						windowsSize=2
+						break
+					case 3:
+						window_set_size(1440,810)
+						windowsSize=2.25
+						break
+				}
+			}
+			//right arrow
+			if( (WMX >= 512*windowsSize && WMX <= 534*windowsSize ) && 
+			    (WMY >= 55.6*windowsSize && WMY <= 76.6*windowsSize) ){
+					show_debug_message("right click")
+					show_debug_message(string(windowsSize))
+				switch(windowsSize){
+					case 1:
+						window_set_size(1280,720)
+						windowsSize=2
+						break
+					case 2:
+						window_set_size(1440,810)
+						windowsSize=2.25
+						break
+					case 2.25:
+						window_set_size(1920,1080)
+						windowsSize=3
+						break
+					case 3:
+						window_set_size(640,360)
+						windowsSize=1
+						break
+				}
+			}
+			
+			#endregion
+			
+			
+			//back
+			if( (WMX >= 48*windowsSize && WMX <= 96*windowsSize ) && 
+			    (WMY >= 274*windowsSize && WMY <= 324*windowsSize) ){
+				menuScreen = menuScreen.main
+			}
+		} 
 		break
 		
 	case menuScreen.exitgame:
