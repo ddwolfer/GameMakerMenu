@@ -95,14 +95,6 @@
             }
         },
         {
-            "Key": "586b8105-b6e0-467e-8e8f-aae4ee60c64d",
-            "Value": {
-                "id": "b5f40764-0dec-4c79-b3c4-4a0f0066d854",
-                "resourcePath": "objects\\object1\\object1.yy",
-                "resourceType": "GMObject"
-            }
-        },
-        {
             "Key": "6a8c85a7-a242-4482-85b0-5f34450f49e8",
             "Value": {
                 "id": "511f07af-618e-4f98-a025-84dadc14e131",
@@ -116,6 +108,14 @@
                 "id": "25d163a7-5daf-47ab-af51-8ced0027e213",
                 "resourcePath": "views\\6e4edeb0-a6c7-4941-902e-82f03b82b458.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "8572d87b-8ba3-4baf-af7d-1b9af0fbc271",
+            "Value": {
+                "id": "58d81edf-02a3-48c1-a4ba-64b3d0cf9ccd",
+                "resourcePath": "scripts\\drawGradualColor\\drawGradualColor.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -264,7 +264,8 @@
         }
     ],
     "script_order": [
-        "6a8c85a7-a242-4482-85b0-5f34450f49e8"
+        "6a8c85a7-a242-4482-85b0-5f34450f49e8",
+        "8572d87b-8ba3-4baf-af7d-1b9af0fbc271"
     ],
     "tutorial": ""
 }

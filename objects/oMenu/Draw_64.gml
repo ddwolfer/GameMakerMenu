@@ -14,10 +14,14 @@ switch(menuScreen){
 			    (WMY >= (line*TextBoxHeight)+MainMenuTextStartPosition_Y && WMY <= (line*TextBoxHeight)+TextBoxHeight+MainMenuTextStartPosition_Y)) ||
 				MainMenuCursor == line){
 				//實心 + 標頭
+				draw_set_alpha(0.9) 
 				draw_set_color(c_blue)
-				draw_rectangle(MainMenuTextStartPosition_X,					(line*TextBoxHeight)+MainMenuTextStartPosition_Y,
+				/*draw_rectangle(MainMenuTextStartPosition_X,					(line*TextBoxHeight)+MainMenuTextStartPosition_Y,
 							   MainMenuTextStartPosition_X+TextBoxWidth  ,	(line*TextBoxHeight)+TextBoxHeight+MainMenuTextStartPosition_Y,
-							   0) 
+							   0) */
+				drawGradualColor(MainMenuTextStartPosition_X,				(line*TextBoxHeight)+MainMenuTextStartPosition_Y,
+							   MainMenuTextStartPosition_X+TextBoxWidth  ,	(line*TextBoxHeight)+TextBoxHeight+MainMenuTextStartPosition_Y,$ACB069)
+				draw_set_alpha(1)
 				draw_set_color(c_white) //顏色設定
 				draw_set_font(ChooseCuesor) //字體設定(包含大小)
 				draw_set_valign(fa_middle) //文字垂直置中
@@ -41,6 +45,8 @@ switch(menuScreen){
 		
 		break
 	case menuScreen.option:
-		
+		//draw_set_color($275267)
+		draw_set_color($ACB069)
+		draw_rectangle(1,1,100,100,0)
 		break
 }
