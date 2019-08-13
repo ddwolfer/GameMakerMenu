@@ -13,6 +13,8 @@ menuScreen = menuScreen.main
 //基礎設定
 windowsSize = window_get_width()/640 //視窗大小 最小為640*360 以此為底算倍數
 gameLanguage = 0
+gameMusic = 10
+gameSFX = 10
 MenuFont = font_add("EquipmentPro.ttf", 12*windowsSize, false, false, 0, 65535)
 ChooseCuesor = font_add("EquipmentPro.ttf", 17*windowsSize, false, false, 0, 65535)
 //main page 設定
@@ -23,14 +25,15 @@ TextBoxWidth = 125 * windowsSize
 MainMenuCursor = 0
 //option page 設定
 optionFont = font_add("EquipmentPro.ttf", 20*windowsSize, false, false, 0, 65535)
-optionTextStart_X = (window_get_width()/10 ) * windowsSize
-optionTextStart_Y = (window_get_height()/10 ) * windowsSize
+optionTextStart_X = (window_get_width()/5 ) 
+optionTextStart_Y = (window_get_height()/5.5 ) 
 optionTextBoxHeight = 55 * windowsSize
 
-optionContentStart_X = (window_get_width()/4 ) * windowsSize
-optionContentEND_X = (window_get_width()/2.6 ) * windowsSize
+optionContentStart_X = (window_get_width()/2 )
+optionContentEND_X = (window_get_width()/1.25 ) 
 optionContentStart_Y = optionTextStart_Y 
 optionContentBoxHeight = optionTextBoxHeight
+
 
 //主畫面文字
 mainMenuText[0, 0] = "NEW GAME"

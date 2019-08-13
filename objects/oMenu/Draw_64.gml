@@ -55,30 +55,30 @@ switch(menuScreen){
 		//上右側內容
 		for(var line = 0 ; line < array_length_1d(optionMenuText) ; line++ ){
 			switch(line){
-				case 0:
+				case 0: //解析度
 					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
 					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
 					draw_set_halign(fa_center)
 					draw_text( (optionContentStart_X+optionContentEND_X+(22*windowsSize))/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[windowsSize-1])
 					draw_set_halign(fa_left)
 					break
-				case 1:
+				case 1: //全螢幕
 					break
-				case 2:
+				case 2: //語言
 					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
 					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
 					draw_set_halign(fa_center)
 					draw_text((optionContentStart_X+optionContentEND_X+(22*windowsSize))/2 , optionTextStart_Y + optionTextBoxHeight*line, LanguageOption[0])
 					draw_set_halign(fa_left)
 					break
-				case 3:
+				case 3: //音樂
 					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
 					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
 					draw_set_halign(fa_center)
 					draw_text((optionContentStart_X+optionContentEND_X+(22*windowsSize))/2 , optionTextStart_Y + optionTextBoxHeight*line, "10")
 					draw_set_halign(fa_left)
 					break
-				case 4:
+				case 4: //音效
 					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
 					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
 					draw_set_halign(fa_center)
