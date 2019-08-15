@@ -22,9 +22,11 @@ gameLanguage = 0
 gameMusic = 100
 gameSFX = 100
 
-MenuFont = font_add(LanguageFont[gameLanguage], 12*windowsSize, false, false, 0, 65535)
+MenuFontSize = 12 *windowsSize
+optionFontSize = 20 *windowsSize
+MenuFont = font_add(LanguageFont[gameLanguage], MenuFontSize, false, false, 0, 65535)
 ChooseCuesor = font_add(LanguageFont[gameLanguage], 17*windowsSize, false, false, 0, 65535)
-optionFont = font_add(LanguageFont[gameLanguage], 20*windowsSize, false, false, 0, 65535)
+optionFont = font_add(LanguageFont[gameLanguage], optionFontSize, false, false, 0, 65535)
 MainMenuCursor = 0
 
 #region main page 設定
