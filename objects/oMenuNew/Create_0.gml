@@ -2,7 +2,14 @@
 // You can write your code in this editor
 getInput()
 //目前畫面
-
+enum menuScreen{
+	newgame = 0,
+	load = 1,
+	option = 2,
+	exitgame = 3,
+	main = 4
+}
+menuScreen = menuScreen.main
 //基礎設定
 windowsSize = window_get_width()/640 //視窗大小 最小為640*360 以此為底算倍數
 gameLanguage = 0
@@ -10,30 +17,23 @@ gameMusic = 10
 gameSFX = 10
 MenuFont = font_add("EquipmentPro.ttf", 12*windowsSize, false, false, 0, 65535)
 ChooseCuesor = font_add("EquipmentPro.ttf", 17*windowsSize, false, false, 0, 65535)
-//main page 設定
-MainMenuTextStartPosition_X = window_get_width()/40
-MainMenuTextStartPosition_Y = window_get_height()/2
-TextBoxHeight = 30 * windowsSize
-TextBoxWidth = 125 * windowsSize
+
+#region main page 設定
+//判斷滑鼠位置用 (與著色不同 可以直接抓room的位置去判斷 不會因draw函數受到影響)
+MainTextStart_X = 16
+MainTextStart_Y = 180
+TextBoxHeight = 30
+TextBoxWidth = 125
+//上色與圖片用的變數 (著色要隨著螢幕大小作變化 因受限於GM2的draw函數 必須要依照Viewport做變化)
+DrawMainTextStart_X = MainTextStart_X * windowsSize
+DrawMainTextStart_Y = MainTextStart_Y * windowsSize
+DrawTextBoxHeight = TextBoxHeight * windowsSize
+DrawTextBoxWidth = TextBoxWidth * windowsSize
+#endregion
+
 MainMenuCursor = 0
 //option page 設定
-optionFont = font_add("EquipmentPro.ttf", 20*windowsSize, false, false, 0, 65535)
-optionTextStart_X = (window_get_width()/5 ) 
-optionTextStart_Y = (window_get_height()/5.5 ) 
-optionTextBoxHeight = 55 * windowsSize
 
-optionContentStart_X = (window_get_width()/2 )
-optionContentEND_X = (window_get_width()/1.25 ) 
-optionContentStart_Y = optionTextStart_Y 
-optionContentBoxHeight = optionTextBoxHeight
-
-optionBackgroundX = 96*windowsSize
-optionBackgroundY = 36*windowsSize
-optionBackgroundW = 448*windowsSize
-optionBackgroundH = 288*windowsSize
-
-optionArrowW = 22*windowsSize
-optionArrowH = 21*windowsSize
 
 //主畫面文字
 mainMenuText[0, 0] = "NEW GAME"

@@ -46,8 +46,7 @@ switch(menuScreen){
 		break
 	case menuScreen.option:
 		//上底色
-		draw_sprite_ext(MenuOptionBackground,0, 96*windowsSize , 36*windowsSize,windowsSize,windowsSize,0,c_white,1)
-		//draw_sprite_stretched(MenuOptionBackground, 0, 96*windowsSize , 36*windowsSize, 448*windowsSize, 288*windowsSize)
+		draw_sprite_stretched(MenuOptionBackground, 0, optionBackgroundX , optionBackgroundY, optionBackgroundW, optionBackgroundH )
 		//上左側文字
 		for(var line = 0 ; line < array_length_1d(optionMenuText) ; line++ ){
 			draw_set_font(optionFont)
@@ -57,48 +56,49 @@ switch(menuScreen){
 		for(var line = 0 ; line < array_length_1d(optionMenuText) ; line++ ){
 			switch(line){
 				case 0: //解析度
-					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
-					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
+					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
+					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
 					draw_set_halign(fa_center)
 					switch(windowsSize){
 						case 1:
-							draw_text( (optionContentStart_X+optionContentEND_X+(22*windowsSize))/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[0])
+							draw_text( (optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[0])
 							break
 						case 2:
-							draw_text( (optionContentStart_X+optionContentEND_X+(22*windowsSize))/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[1])
+							draw_text( (optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[1])
 							break
 						case 2.25:
-							draw_text( (optionContentStart_X+optionContentEND_X+(22*windowsSize))/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[2])
+							draw_text( (optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[2])
 							break
 						case 3:
-							draw_text( (optionContentStart_X+optionContentEND_X+(22*windowsSize))/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[3])
+							draw_text( (optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[3])
 							break
 					}
 					draw_set_halign(fa_left)
 					break
 				case 1: //全螢幕
-					draw_rectangle(48*windowsSize, 294*windowsSize, 96*windowsSize, 324*windowsSize,0)
-					draw_sprite_stretched(sback, 0, 48*windowsSize, 294*windowsSize, 48*windowsSize, 30*windowsSize)
+					draw_set_alpha(1)
+					draw_rectangle(48*windowsSize, 294*windowsSize, 96*windowsSize, 324*windowsSize,1)
+					
 					break
 				case 2: //語言
-					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
-					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
+					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
+					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
 					draw_set_halign(fa_center)
-					draw_text((optionContentStart_X+optionContentEND_X+(22*windowsSize))/2 , optionTextStart_Y + optionTextBoxHeight*line, LanguageOption[0])
+					draw_text((optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, LanguageOption[0])
 					draw_set_halign(fa_left)
 					break
 				case 3: //音樂
-					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
-					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
+					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
+					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
 					draw_set_halign(fa_center)
-					draw_text((optionContentStart_X+optionContentEND_X+(22*windowsSize))/2 , optionTextStart_Y + optionTextBoxHeight*line, "10")
+					draw_text((optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, "10")
 					draw_set_halign(fa_left)
 					break
 				case 4: //音效
-					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
-					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line ,22*windowsSize,21*windowsSize)
+					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
+					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
 					draw_set_halign(fa_center)
-					draw_text((optionContentStart_X+optionContentEND_X+(22*windowsSize))/2 , optionTextStart_Y + optionTextBoxHeight*line, "10")
+					draw_text((optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, "10")
 					draw_set_halign(fa_left)
 					break			
 			}

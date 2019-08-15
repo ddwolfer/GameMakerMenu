@@ -56,58 +56,62 @@ switch(menuScreen){
 			//left arrow
 			if( (WMX >= 320*windowsSize && WMX <= 342*windowsSize ) && 
 			    (WMY >= 55.6*windowsSize && WMY <= 76.6*windowsSize) ){
-					show_debug_message("left click")
-					show_debug_message(string(windowsSize))
+				show_debug_message("left click")
+				
 				switch(windowsSize){
 					case 1:
 						window_set_size(1920,1080)
-						windowsSize=3
+						windowsSize = 3
 						break
 					case 2:
 						window_set_size(640,360)
-						windowsSize=1
+						windowsSize = 1
 						break
 					case 2.25:
 						window_set_size(1280,720)
-						windowsSize=2
+						windowsSize = 2
 						break
 					case 3:
 						window_set_size(1440,810)
-						windowsSize=2.25
+						windowsSize = 2.25
 						break
 				}
+				show_debug_message(string(windowsSize))
+				menuReset()
 			}
 			//right arrow
 			if( (WMX >= 512*windowsSize && WMX <= 534*windowsSize ) && 
 			    (WMY >= 55.6*windowsSize && WMY <= 76.6*windowsSize) ){
-					show_debug_message("right click")
-					show_debug_message(string(windowsSize))
+				show_debug_message("right click")
+				
 				switch(windowsSize){
 					case 1:
 						window_set_size(1280,720)
-						windowsSize=2
+						windowsSize = 2
 						break
 					case 2:
 						window_set_size(1440,810)
-						windowsSize=2.25
+						windowsSize = 2.25
 						break
 					case 2.25:
 						window_set_size(1920,1080)
-						windowsSize=3
+						windowsSize = 3
 						break
 					case 3:
 						window_set_size(640,360)
-						windowsSize=1
+						windowsSize = 1
 						break
 				}
+				show_debug_message(string(windowsSize))
+				menuReset()
 			}
 			
 			#endregion
 			
 			
 			//back
-			if( (WMX >= 48*windowsSize && WMX <= 96*windowsSize ) && 
-			    (WMY >= 274*windowsSize && WMY <= 324*windowsSize) ){
+			if( (WMX >= window_get_width()/13.3 && WMX <= window_get_width()/6.66 ) && 
+			    (WMY >= window_get_height()/1.31 && WMY <= window_get_height()/1.11) ){
 				menuScreen = menuScreen.main
 			}
 		} 
