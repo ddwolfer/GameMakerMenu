@@ -1,104 +1,124 @@
 /// @description 介面文字
-// You can write your code in this editor
+
+//抓滑鼠位置 window_mouse_get()會抓Viewport絕對位置 mouse_x會抓RoomXY絕對位置
+var MX = mouse_x
+var MY = mouse_y
+
 switch(menuScreen){
 	case menuScreen.main:
 		#region main繪圖
 		//繪製文字與框
 		for(var line = 0 ; line < array_length_1d(mainMenuText) ; line++){
-			//抓滑鼠位置 window_mouse_get會抓Camera位置 mouse_x會抓Viewport位置
-			var WMX = window_mouse_get_x()
-			var WMY = window_mouse_get_y()
-			var textY = (line*TextBoxHeight) + TextBoxHeight/2 + MainMenuTextStartPosition_Y
-			var textX = MainMenuTextStartPosition_X*1.3
-			//畫框 前兩行判斷為滑鼠 第三行判斷為案鍵
-			if( ((WMX >= MainMenuTextStartPosition_X && WMX <= MainMenuTextStartPosition_X+TextBoxWidth ) && 
-			    (WMY >= (line*TextBoxHeight)+MainMenuTextStartPosition_Y && WMY <= (line*TextBoxHeight)+TextBoxHeight+MainMenuTextStartPosition_Y)) ||
-				MainMenuCursor == line){
-				//實心 + 標頭
-				//畫漸層方塊 x1,y1,x2,y2,color
-				drawGradualColor(MainMenuTextStartPosition_X,				(line*TextBoxHeight)+MainMenuTextStartPosition_Y,
-							   MainMenuTextStartPosition_X+TextBoxWidth  ,	(line*TextBoxHeight)+TextBoxHeight+MainMenuTextStartPosition_Y,
-							   $ACB069)
+			//文字位置 比框靠近中心一點
+			var textX = DrawMainTextStart_X *1.3
+			var textY = (line*DrawTextBoxHeight) + DrawTextBoxHeight/2 + DrawMainTextStart_Y
+			//畫實心框 前兩行判斷為滑鼠 第三行判斷為案鍵
+			if( ( MX>= MainTextStart_X							&&	MX<= MainTextStart_X + TextBoxWidth )			&&
+			    ( MY>= MainTextStart_Y + (line*TextBoxHeight)	&&	MY<= MainTextStart_Y + ((line+1)*TextBoxHeight))||
+				MainMenuCursor == line ){
+				//實心 + 光標
+				drawGradualColor(DrawMainTextStart_X						,(line*DrawTextBoxHeight)+DrawMainTextStart_Y,
+							     DrawMainTextStart_X+DrawTextBoxWidth		,(line*DrawTextBoxHeight)+DrawTextBoxHeight+DrawMainTextStart_Y,$ACB069)//漸層色(in Script)
 				draw_set_color(c_white) //顏色設定
 				draw_set_font(ChooseCuesor) //字體設定(包含大小)
 				draw_set_valign(fa_middle) //文字垂直置中
-				draw_text(MainMenuTextStartPosition_X * 0.6, textY, ">")
+				draw_text(DrawMainTextStart_X * 0.6, textY, ">")
 				draw_set_valign(fa_top)
 				MainMenuCursor = line
-			}else{
-				//空心
-				draw_set_alpha(0) //透明度0%
-				draw_rectangle(MainMenuTextStartPosition_X,					(line*TextBoxHeight)+MainMenuTextStartPosition_Y, 
-							   MainMenuTextStartPosition_X+TextBoxWidth  ,	(line*TextBoxHeight)+TextBoxHeight+MainMenuTextStartPosition_Y,
-							   1) 
-				draw_set_alpha(1) //透明度100% 不返回的話後面都是0
 			}
+			//選單文字
 			draw_set_color(c_white) //顏色設定
 			draw_set_font(MenuFont) //字體設定(包含大小)
 			draw_set_valign(fa_middle) //文字垂直置中
 			draw_text(textX, textY, mainMenuText[gameLanguage,line])
 		}
-		break
 		#endregion
+		break
 		
 	case menuScreen.load:
 		
 		break
 	case menuScreen.option:
 		//上底色
-		draw_sprite_stretched(MenuOptionBackground, 0, optionBackgroundX , optionBackgroundY, optionBackgroundW, optionBackgroundH )
+		draw_sprite_stretched(MenuOptionBackground, 0, DrawOptionBackground_X , DrawOptionBackground_Y, DrawOptionBackground_W, DrawOptionBackground_H )
 		//上左側文字
 		for(var line = 0 ; line < array_length_1d(optionMenuText) ; line++ ){
 			draw_set_font(optionFont)
-			draw_text(optionTextStart_X ,optionTextStart_Y + optionTextBoxHeight*line ,optionMenuText[gameLanguage,line])
+			draw_text(DrawOptionTextStart_X ,DrawOptionTextStart_Y + DrawOptionTextBoxHeight*line ,optionMenuText[gameLanguage,line])
 		}
 		//上右側內容
 		for(var line = 0 ; line < array_length_1d(optionMenuText) ; line++ ){
+			Text_X = (DrawOptionContentStart_X+DrawOptionContentEND_X+DrawOptionArrow_W)/2
+			Text_Y =  DrawOptionContentStart_Y + DrawOptionContentBoxHeight*line
 			switch(line){
 				case 0: //解析度
-					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
-					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
+					#region //解析度
+					draw_sprite_stretched(sMenuArrowLeft,0, DrawOptionContentStart_X, DrawOptionContentStart_Y*0.85 + DrawOptionContentBoxHeight*line , DrawOptionArrow_W, DrawOptionArrow_H)
+					draw_sprite_stretched(sMenuArrowRight,0, DrawOptionContentEND_X, DrawOptionContentStart_Y*0.85 + DrawOptionContentBoxHeight*line , DrawOptionArrow_W, DrawOptionArrow_W)
 					draw_set_halign(fa_center)
-					switch(windowsSize){
+					if(window_get_fullscreen()){
+						draw_set_color(c_gray)
+						draw_text( Text_X , Text_Y , resolution[3])
+						draw_set_color(c_white)
+					}else{
+						switch(windowsSize){
 						case 1:
-							draw_text( (optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[0])
+							draw_text( Text_X , Text_Y , resolution[0])
 							break
 						case 2:
-							draw_text( (optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[1])
+							draw_text( Text_X , Text_Y , resolution[1])
 							break
 						case 2.25:
-							draw_text( (optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[2])
+							draw_text( Text_X , Text_Y , resolution[2])
 							break
 						case 3:
-							draw_text( (optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, resolution[3])
+							draw_text( Text_X , Text_Y , resolution[3])
 							break
+						}
 					}
+					
 					draw_set_halign(fa_left)
+				#endregion
 					break
 				case 1: //全螢幕
-					draw_set_alpha(1)
-					draw_rectangle(48*windowsSize, 294*windowsSize, 96*windowsSize, 324*windowsSize,1)
-					
+					if(window_get_fullscreen()){
+						draw_set_color(c_red)
+						draw_line_width((DFSx2 - DFSx1)/4+DFSx1,( DFSy1 + DFSy2 )/2,(DFSx1 + DFSx2)/2,DFSy2,7)
+						draw_line_width(DFSx2,DFSy1,(DFSx1 + DFSx2)/2,DFSy2,7)
+						draw_set_color(c_white)
+						draw_line_width(DFSx1,DFSy1,DFSx2,DFSy1,10)
+						draw_line_width(DFSx2,DFSy1,DFSx2,DFSy2,10)
+						draw_line_width(DFSx2,DFSy2,DFSx1,DFSy2,10)
+						draw_line_width(DFSx1,DFSy2,DFSx1,DFSy1,10)
+					}else{
+						draw_line_width(DFSx1,DFSy1,DFSx2,DFSy1,10)
+						draw_line_width(DFSx2,DFSy1,DFSx2,DFSy2,10)
+						draw_line_width(DFSx2,DFSy2,DFSx1,DFSy2,10)
+						draw_line_width(DFSx1,DFSy2,DFSx1,DFSy1,10)
+					}
 					break
 				case 2: //語言
-					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
-					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
+					draw_sprite_stretched(sMenuArrowLeft,0, DrawOptionContentStart_X, DrawOptionContentStart_Y*0.85 + DrawOptionContentBoxHeight*line , DrawOptionArrow_W, DrawOptionArrow_H)
+					draw_sprite_stretched(sMenuArrowRight,0, DrawOptionContentEND_X, DrawOptionContentStart_Y*0.85 + DrawOptionContentBoxHeight*line , DrawOptionArrow_W, DrawOptionArrow_W)
+					
 					draw_set_halign(fa_center)
-					draw_text((optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, LanguageOption[0])
+					draw_text( Text_X, Text_Y , LanguageOption[ gameLanguage ])
 					draw_set_halign(fa_left)
 					break
 				case 3: //音樂
-					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
-					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
+					draw_sprite_stretched(sMenuArrowLeft,0, DrawOptionContentStart_X, DrawOptionContentStart_Y*0.85 + DrawOptionContentBoxHeight*line , DrawOptionArrow_W, DrawOptionArrow_H)
+					draw_sprite_stretched(sMenuArrowRight,0, DrawOptionContentEND_X, DrawOptionContentStart_Y*0.85 + DrawOptionContentBoxHeight*line , DrawOptionArrow_W, DrawOptionArrow_W)
+					
 					draw_set_halign(fa_center)
-					draw_text((optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, "10")
+					draw_text( Text_X, Text_Y , string(gameMusic) + "%")
 					draw_set_halign(fa_left)
 					break
 				case 4: //音效
-					draw_sprite_stretched(sMenuArrowLeft,0,optionContentStart_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
-					draw_sprite_stretched(sMenuArrowRight,0,optionContentEND_X, optionTextStart_Y*0.85 + optionTextBoxHeight*line , optionArrowW, optionArrowH)
+					draw_sprite_stretched(sMenuArrowLeft,0, DrawOptionContentStart_X, DrawOptionContentStart_Y*0.85 + DrawOptionContentBoxHeight*line , DrawOptionArrow_W, DrawOptionArrow_H)
+					draw_sprite_stretched(sMenuArrowRight,0, DrawOptionContentEND_X, DrawOptionContentStart_Y*0.85 + DrawOptionContentBoxHeight*line , DrawOptionArrow_W, DrawOptionArrow_W)
+					
 					draw_set_halign(fa_center)
-					draw_text((optionContentStart_X+optionContentEND_X+optionArrowW)/2 , optionTextStart_Y + optionTextBoxHeight*line, "10")
+					draw_text( Text_X, Text_Y , string(gameSFX)+"%")
 					draw_set_halign(fa_left)
 					break			
 			}

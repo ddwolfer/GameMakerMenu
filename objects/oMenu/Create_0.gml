@@ -2,38 +2,82 @@
 // You can write your code in this editor
 getInput()
 //目前畫面
+enum menuScreen{
+	newgame = 0,
+	load = 1,
+	option = 2,
+	exitgame = 3,
+	main = 4
+}
+menuScreen = menuScreen.main
+//語言
+LanguageOption[0] = "English"
+LanguageOption[1] = "繁體中文"
 
+LanguageFont[0] = "EquipmentPro.ttf"
+LanguageFont[1] = "Chinese.ttf"
 //基礎設定
 windowsSize = window_get_width()/640 //視窗大小 最小為640*360 以此為底算倍數
 gameLanguage = 0
-gameMusic = 10
-gameSFX = 10
-MenuFont = font_add("EquipmentPro.ttf", 12*windowsSize, false, false, 0, 65535)
-ChooseCuesor = font_add("EquipmentPro.ttf", 17*windowsSize, false, false, 0, 65535)
-//main page 設定
-MainMenuTextStartPosition_X = window_get_width()/40
-MainMenuTextStartPosition_Y = window_get_height()/2
-TextBoxHeight = 30 * windowsSize
-TextBoxWidth = 125 * windowsSize
+gameMusic = 100
+gameSFX = 100
+
+MenuFont = font_add(LanguageFont[gameLanguage], 12*windowsSize, false, false, 0, 65535)
+ChooseCuesor = font_add(LanguageFont[gameLanguage], 17*windowsSize, false, false, 0, 65535)
+optionFont = font_add(LanguageFont[gameLanguage], 20*windowsSize, false, false, 0, 65535)
 MainMenuCursor = 0
-//option page 設定
-optionFont = font_add("EquipmentPro.ttf", 20*windowsSize, false, false, 0, 65535)
-optionTextStart_X = (window_get_width()/5 ) 
-optionTextStart_Y = (window_get_height()/5.5 ) 
-optionTextBoxHeight = 55 * windowsSize
 
-optionContentStart_X = (window_get_width()/2 )
-optionContentEND_X = (window_get_width()/1.25 ) 
-optionContentStart_Y = optionTextStart_Y 
-optionContentBoxHeight = optionTextBoxHeight
+#region main page 設定
+//判斷滑鼠位置用 (與著色不同 可以直接抓room的位置去判斷 不會因draw函數受到影響)
+MainTextStart_X = 16
+MainTextStart_Y = 180
+TextBoxHeight = 30
+TextBoxWidth = 125
+//上色與圖片用的變數 (著色要隨著螢幕大小作變化 因受限於GM2的draw函數 必須要依照Viewport做變化)
+DrawMainTextStart_X = MainTextStart_X * windowsSize
+DrawMainTextStart_Y = MainTextStart_Y * windowsSize
+DrawTextBoxHeight = TextBoxHeight * windowsSize
+DrawTextBoxWidth = TextBoxWidth * windowsSize
+#endregion
 
-optionBackgroundX = 96*windowsSize
-optionBackgroundY = 36*windowsSize
-optionBackgroundW = 448*windowsSize
-optionBackgroundH = 288*windowsSize
+#region option page 設定
+//背景
+DrawOptionBackground_X = 96*windowsSize
+DrawOptionBackground_Y = 36*windowsSize
+DrawOptionBackground_W = 448*windowsSize
+DrawOptionBackground_H = 288*windowsSize
+//左側文字
+DrawOptionTextStart_X = 128 * windowsSize
+DrawOptionTextStart_Y = 65 * windowsSize
+DrawOptionTextBoxHeight = 55 * windowsSize
+//右側文字
+optionContentStart_X = 320
+optionContentEND_X = 490
+optionContentStart_Y = 65
+optionContentBoxHeight = 55
 
-optionArrowW = 22*windowsSize
-optionArrowH = 21*windowsSize
+DrawOptionContentStart_X = 320 * windowsSize
+DrawOptionContentEND_X = 490 * windowsSize
+DrawOptionContentStart_Y = 65 * windowsSize
+DrawOptionContentBoxHeight = 55 * windowsSize
+//箭頭
+optionArrow_W = sprite_get_width(sMenuArrowLeft)
+optionArrow_H = sprite_get_height(sMenuArrowLeft)
+
+DrawOptionArrow_W = optionArrow_W * windowsSize
+DrawOptionArrow_H = optionArrow_H * windowsSize
+//全螢幕的框框
+DFSx1 = 403 * windowsSize
+DFSx2 = 429 * windowsSize
+DFSy1 = 104 * windowsSize
+DFSy2 = 130 * windowsSize
+
+FSx1 = 403 
+FSx2 = 429
+FSy1 = 104
+FSy2 = 130 
+#endregion
+
 
 //主畫面文字
 mainMenuText[0, 0] = "NEW GAME"
@@ -65,6 +109,5 @@ resolution[1] = "1280*720"
 resolution[2] = "1440*810" 
 resolution[3] = "1920*1080" 
 
-//語言
-LanguageOption[0] = "English"
-LanguageOption[1] = "Chinese"
+
+
