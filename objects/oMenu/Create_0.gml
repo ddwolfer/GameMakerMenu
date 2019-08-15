@@ -21,13 +21,13 @@ windowsSize = window_get_width()/640 //視窗大小 最小為640*360 以此為�
 gameLanguage = 0
 gameMusic = 100
 gameSFX = 100
-
-MenuFontSize = 12 *windowsSize
-optionFontSize = 20 *windowsSize
+MainMenuCursor = 0
+//文字設定
+MenuFontSize = 11 *windowsSize
+optionFontSize = 15 *windowsSize
 MenuFont = font_add(LanguageFont[gameLanguage], MenuFontSize, false, false, 0, 65535)
 ChooseCuesor = font_add(LanguageFont[gameLanguage], 17*windowsSize, false, false, 0, 65535)
 optionFont = font_add(LanguageFont[gameLanguage], optionFontSize, false, false, 0, 65535)
-MainMenuCursor = 0
 
 #region main page 設定
 //判斷滑鼠位置用 (與著色不同 可以直接抓room的位置去判斷 不會因draw函數受到影響)
@@ -58,10 +58,10 @@ optionContentEND_X = 490
 optionContentStart_Y = 65
 optionContentBoxHeight = 55
 
-DrawOptionContentStart_X = 320 * windowsSize
-DrawOptionContentEND_X = 490 * windowsSize
-DrawOptionContentStart_Y = 65 * windowsSize
-DrawOptionContentBoxHeight = 55 * windowsSize
+DrawOptionContentStart_X = optionContentStart_X * windowsSize
+DrawOptionContentEND_X = optionContentEND_X * windowsSize
+DrawOptionContentStart_Y = optionContentStart_Y * windowsSize
+DrawOptionContentBoxHeight = optionContentBoxHeight * windowsSize
 //箭頭
 optionArrow_W = sprite_get_width(sMenuArrowLeft)
 optionArrow_H = sprite_get_height(sMenuArrowLeft)
@@ -80,6 +80,27 @@ FSy1 = 104
 FSy2 = 130 
 #endregion
 
+#region Load page 設定
+LoadStart_X = 126
+LoadStart_Y = 66
+LoadBoxWidth = 388
+LoadBoxHeight = 60
+LoadBoxSpace = 24
+
+DrawLoadBoxTitle_X = 111 * windowsSize
+DrawLoadBoxTitle_Y = 56 * windowsSize
+DrawLoadBoxTitle_W = 50 * windowsSize
+DrawLoadBoxTitle_H = 20 * windowsSize
+
+DrawLoadStart_X = LoadStart_X * windowsSize
+DrawLoadStart_Y = LoadStart_Y * windowsSize
+DrawLoadBoxWidth = LoadBoxWidth * windowsSize
+DrawLoadBoxHeight = LoadBoxHeight * windowsSize
+DrawLoadBoxSpace = LoadBoxSpace * windowsSize
+
+
+
+#endregion
 
 //主畫面文字
 mainMenuText[0, 0] = "NEW GAME"
@@ -104,6 +125,12 @@ optionMenuText[1, 1] = "全螢幕"
 optionMenuText[1, 2] = "語言"
 optionMenuText[1, 3] = "音樂"
 optionMenuText[1, 4] = "音效"
+
+LoadTxT [0,0] = "SAVE"
+LoadTxT [1,0] = "存檔"
+
+EmptyTxT [0,0] = "Empty"
+EmptyTxT [1,0] = "空"
 
 //解析度大小 (640*360 的幾倍)
 resolution[0] = "640*360" 

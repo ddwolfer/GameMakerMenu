@@ -36,9 +36,34 @@ switch(menuScreen){
 		break
 		
 	case menuScreen.load:
+		//上底色
+		draw_sprite_stretched(MenuOptionBackground, 0, DrawOptionBackground_X , DrawOptionBackground_Y, DrawOptionBackground_W, DrawOptionBackground_H )
+		
+		//3個方框
+		for(var line = 0 ; line < 3 ; line++){
+			draw_set_color($ACB069)
+			draw_set_alpha(0.7)
+			draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,0)
+			draw_set_alpha(1)
+			
+			draw_set_color($384373)
+			draw_rectangle(DrawLoadBoxTitle_X, DrawLoadBoxTitle_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadBoxTitle_X + DrawLoadBoxTitle_W,DrawLoadBoxTitle_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxTitle_H,0)
+			
+			draw_set_color(c_white)
+			draw_set_valign(fa_middle)
+			draw_set_font(MenuFont)
+			draw_text(DrawLoadBoxTitle_X*1.05 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), LoadTxT[gameLanguage,0]+string(line+1))
+			
+			draw_set_color(c_white)
+			draw_set_halign(fa_middle)
+			draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  " + EmptyTxT[gameLanguage,0] + "  ]")
+			draw_set_halign(fa_left)
+			draw_set_valign(fa_top)
+		}
 		
 		break
 	case menuScreen.option:
+		#region //option繪圖
 		//上底色
 		draw_sprite_stretched(MenuOptionBackground, 0, DrawOptionBackground_X , DrawOptionBackground_Y, DrawOptionBackground_W, DrawOptionBackground_H )
 		//上左側文字
@@ -76,21 +101,20 @@ switch(menuScreen){
 							break
 						}
 					}
-					
 					draw_set_halign(fa_left)
 				#endregion
 					break
 				case 1: //全螢幕
-					if(window_get_fullscreen()){
-						draw_set_color(c_red)
+					if(window_get_fullscreen()){ 
+						draw_set_color(c_red) //打勾的部分
 						draw_line_width((DFSx2 - DFSx1)/4+DFSx1,( DFSy1 + DFSy2 )/2,(DFSx1 + DFSx2)/2,DFSy2,7)
 						draw_line_width(DFSx2,DFSy1,(DFSx1 + DFSx2)/2,DFSy2,7)
-						draw_set_color(c_white)
+						draw_set_color(c_white) //方框
 						draw_line_width(DFSx1,DFSy1,DFSx2,DFSy1,10)
 						draw_line_width(DFSx2,DFSy1,DFSx2,DFSy2,10)
 						draw_line_width(DFSx2,DFSy2,DFSx1,DFSy2,10)
 						draw_line_width(DFSx1,DFSy2,DFSx1,DFSy1,10)
-					}else{
+					}else{//方框
 						draw_line_width(DFSx1,DFSy1,DFSx2,DFSy1,10)
 						draw_line_width(DFSx2,DFSy1,DFSx2,DFSy2,10)
 						draw_line_width(DFSx2,DFSy2,DFSx1,DFSy2,10)
@@ -124,5 +148,6 @@ switch(menuScreen){
 			}
 
 		}
+		#endregion
 		break
 }

@@ -39,11 +39,11 @@
             }
         },
         {
-            "Key": "0ee7ad17-8576-47b7-8afd-b883dee37ce6",
+            "Key": "0dcfc1d0-2319-4a64-bd49-5e4c04962ef6",
             "Value": {
-                "id": "a9452e91-6d9d-4427-bc06-361f054f7d43",
-                "resourcePath": "scripts\\testForResolution\\testForResolution.yy",
-                "resourceType": "GMScript"
+                "id": "6e0317a7-303e-4775-af74-b1b37499077d",
+                "resourcePath": "fonts\\fontDefault\\fontDefault.yy",
+                "resourceType": "GMFont"
             }
         },
         {
@@ -100,6 +100,14 @@
                 "id": "c18e83f1-2916-46f4-9b2a-048da2b7cb95",
                 "resourcePath": "rooms\\rMenu\\rMenu.yy",
                 "resourceType": "GMRoom"
+            }
+        },
+        {
+            "Key": "536583f6-877e-49bd-8164-accad229a297",
+            "Value": {
+                "id": "b176d562-d54d-4ba7-b666-05c6e9f0b98d",
+                "resourcePath": "objects\\oInGameTime\\oInGameTime.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -271,6 +279,14 @@
             }
         },
         {
+            "Key": "f6cd03aa-b242-40b8-b8fa-95d5fa499b99",
+            "Value": {
+                "id": "884b6d0e-afea-4f41-b82d-9747de52062e",
+                "resourcePath": "views\\f6cd03aa-b242-40b8-b8fa-95d5fa499b99.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "fd42a8c1-629f-4e1b-bb1e-7e1e35c811e1",
             "Value": {
                 "id": "e1962e1c-12b5-4a62-8082-040e237544c6",
@@ -314,7 +330,6 @@
     "script_order": [
         "6a8c85a7-a242-4482-85b0-5f34450f49e8",
         "8572d87b-8ba3-4baf-af7d-1b9af0fbc271",
-        "0ee7ad17-8576-47b7-8afd-b883dee37ce6",
         "68ca9020-9481-4249-ac39-e91ef7e82a59"
     ],
     "tutorial": ""

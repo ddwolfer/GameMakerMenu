@@ -45,7 +45,10 @@ switch(menuScreen){
 		#endregion
 		break
 	case menuScreen.load:
-		menuScreen = menuScreen.main
+		//鍵盤返回
+		if( keyboard_check_pressed( vk_escape ) ){
+			menuScreen = menuScreen.main
+		}
 		break
 		
 	case menuScreen.option:
