@@ -1,8 +1,10 @@
 /// @description Insert description here
 // You can write your code in this editor
-StepCount ++
+if(room != rMenu){
+	StepCount ++
+}
 //偵數轉秒
-if( StepCount % room_speed == 0 ){
+if( StepCount % room_speed == 0  && StepCount!=0){
 	Sec++
 	StepCount = 0
 }

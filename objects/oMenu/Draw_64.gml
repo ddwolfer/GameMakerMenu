@@ -42,24 +42,44 @@ switch(menuScreen){
 		
 		//3個方框
 		for(var line = 0 ; line < 3 ; line++){
+			//存檔方框
 			draw_set_color($ACB069)
 			draw_set_alpha(0.7)
 			draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,0)
 			draw_set_alpha(1)
-			
+			//判斷滑鼠位置
+			if( ( MX >= LoadStart_X											&& MX <= DrawLoadStart_X+DrawLoadBoxWidth )	&& 
+				( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
+				draw_set_color(c_white)
+				draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
+				draw_rectangle(DrawLoadStart_X+1, DrawLoadStart_Y+1 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-1,DrawLoadStart_Y-1 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
+				draw_rectangle(DrawLoadStart_X+2, DrawLoadStart_Y+2 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-2,DrawLoadStart_Y-2 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
+				draw_rectangle(DrawLoadStart_X+3, DrawLoadStart_Y+3 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-3,DrawLoadStart_Y-3 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
+			}
+			//標題方框
 			draw_set_color($384373)
 			draw_rectangle(DrawLoadBoxTitle_X, DrawLoadBoxTitle_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadBoxTitle_X + DrawLoadBoxTitle_W,DrawLoadBoxTitle_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxTitle_H,0)
-			
+			//標題文字
 			draw_set_color(c_white)
 			draw_set_valign(fa_middle)
 			draw_set_font(MenuFont)
 			draw_text(DrawLoadBoxTitle_X*1.05 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), LoadTxT[global.gameLanguage,0]+string(line+1))
+			//空存檔
+			filename = "savefile0" + string(line+1) + ".sav"
+			if(file_exists(filename)){
+				draw_set_color(c_white)
+				draw_set_halign(fa_middle)
+				draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  有存檔喔  ]")
+				draw_set_halign(fa_left)
+				draw_set_valign(fa_top)
+			}else{
+				draw_set_color(c_white)
+				draw_set_halign(fa_middle)
+				draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  " + EmptyTxT[global.gameLanguage,0] + "  ]")
+				draw_set_halign(fa_left)
+				draw_set_valign(fa_top)
+			}
 			
-			draw_set_color(c_white)
-			draw_set_halign(fa_middle)
-			draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  " + EmptyTxT[global.gameLanguage,0] + "  ]")
-			draw_set_halign(fa_left)
-			draw_set_valign(fa_top)
 		}
 		#endregion
 		break
@@ -70,24 +90,44 @@ switch(menuScreen){
 		
 		//3個方框
 		for(var line = 0 ; line < 3 ; line++){
+			//存檔方框
 			draw_set_color($ACB069)
 			draw_set_alpha(0.7)
 			draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,0)
 			draw_set_alpha(1)
-			
+			//判斷滑鼠位置
+			if( ( MX >= LoadStart_X											&& MX <= DrawLoadStart_X+DrawLoadBoxWidth )	&& 
+				( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
+				draw_set_color(c_white)
+				draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
+				draw_rectangle(DrawLoadStart_X+1, DrawLoadStart_Y+1 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-1,DrawLoadStart_Y-1 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
+				draw_rectangle(DrawLoadStart_X+2, DrawLoadStart_Y+2 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-2,DrawLoadStart_Y-2 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
+				draw_rectangle(DrawLoadStart_X+3, DrawLoadStart_Y+3 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-3,DrawLoadStart_Y-3 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
+			}
+			//標題方框
 			draw_set_color($384373)
 			draw_rectangle(DrawLoadBoxTitle_X, DrawLoadBoxTitle_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadBoxTitle_X + DrawLoadBoxTitle_W,DrawLoadBoxTitle_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxTitle_H,0)
-			
+			//標題文字
 			draw_set_color(c_white)
 			draw_set_valign(fa_middle)
 			draw_set_font(MenuFont)
 			draw_text(DrawLoadBoxTitle_X*1.05 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), LoadTxT[global.gameLanguage,0]+string(line+1))
+			//空存檔
+			filename = "savefile0" + string(line+1) + ".sav"
+			if(file_exists(filename)){
+				draw_set_color(c_white)
+				draw_set_halign(fa_middle)
+				draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  有存檔喔  ]")
+				draw_set_halign(fa_left)
+				draw_set_valign(fa_top)
+			}else{
+				draw_set_color(c_white)
+				draw_set_halign(fa_middle)
+				draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  " + EmptyTxT[global.gameLanguage,0] + "  ]")
+				draw_set_halign(fa_left)
+				draw_set_valign(fa_top)
+			}
 			
-			draw_set_color(c_white)
-			draw_set_halign(fa_middle)
-			draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  " + EmptyTxT[global.gameLanguage,0] + "  ]")
-			draw_set_halign(fa_left)
-			draw_set_valign(fa_top)
 		}
 		#endregion
 		break

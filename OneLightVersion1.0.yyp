@@ -31,6 +31,14 @@
     },
     "resources": [
         {
+            "Key": "03dba809-c192-4bc1-8568-2df2c91d0d1b",
+            "Value": {
+                "id": "00a321d6-572f-4b3f-b263-8a8cc348ae47",
+                "resourcePath": "objects\\oGame\\oGame.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "0c3c2000-39b4-4601-8057-0981192ed97f",
             "Value": {
                 "id": "ad967032-a703-4a83-8ff6-efd38a376d43",

@@ -12,6 +12,25 @@ switch(menuScreen){
 		if( keyboard_check_pressed( vk_escape ) ){
 			menuScreen = menuScreen.main
 		}
+		//3個方框
+		if ( mouse_check_button_pressed(mb_left) ){
+			for(var line = 0 ; line < 3 ; line++){
+				//判斷滑鼠位置
+				if( ( MX >= LoadStart_X											&& MX <= DrawLoadStart_X+DrawLoadBoxWidth )	&& 
+					( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
+					filename = "savefile0" + string(line+1) + ".sav"
+					if(file_exists(filename)){
+						//播放不能選擇的聲音
+					}else{
+						with(oGame){
+							targetRoom = rStart
+							doTransition = true
+							playWithSave = line+1
+						}
+					}
+				}
+			}
+		}
 		#endregion
 		break
 		
@@ -57,8 +76,23 @@ switch(menuScreen){
 		if( keyboard_check_pressed( vk_escape ) ){
 			menuScreen = menuScreen.main
 		}
-		
-		
+		//3個方框
+		if ( mouse_check_button_pressed(mb_left) ){
+			for(var line = 0 ; line < 3 ; line++){
+				//判斷滑鼠位置
+				if( ( MX >= LoadStart_X											&& MX <= DrawLoadStart_X+DrawLoadBoxWidth )	&& 
+					( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
+					filename = "savefile0" + string(line+1) + ".sav"
+					if(file_exists(filename)){
+						targetRoom = rStart
+						doTransition = true
+						playWithSave = line+1
+					}else{
+						//播放不能選擇的聲音
+					}
+				}
+			}
+		}
 		#endregion
 		break
 		

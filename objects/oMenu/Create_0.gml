@@ -85,6 +85,9 @@ if(file_exists("saveSystem.sav")){ //如果存檔存在
 	if( map[?"FullScreen"] != undefined ){
 		if( map[?"FullScreen"] == 1){
 			window_set_fullscreen(1)
+			global.gameFullScreen = 1
+		}else{
+			global.gameFullScreen = 0
 		}
 	}else{
 		global.gameFullScreen = 0
@@ -103,7 +106,7 @@ MainMenuCursor = 0
 MenuFontSize = 11 * global.windowsSize
 optionFontSize = 15 * global.windowsSize
 MenuFont = font_add(LanguageFont[global.gameLanguage], MenuFontSize, false, false, 0, 65535)
-ChooseCuesor = font_add(LanguageFont[global.gameLanguage], 17 * global.windowsSize, false, false, 0, 65535)
+ChooseCuesor = font_add("EquipmentPro.ttf", 17 * global.windowsSize, false, false, 0, 65535)
 optionFont = font_add(LanguageFont[global.gameLanguage], optionFontSize, false, false, 0, 65535)
 
 #region main page 設定
