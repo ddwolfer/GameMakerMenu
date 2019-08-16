@@ -10,3 +10,6 @@ doTransition = false
 targetRoom = noone
 
 playWithSave = 0
+
+FreezeControl = false
+FreezeMove = false

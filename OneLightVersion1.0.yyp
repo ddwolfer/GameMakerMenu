@@ -130,7 +130,7 @@
             "Key": "4877fbf4-1eb3-4a69-83ec-4a389322a8e9",
             "Value": {
                 "id": "c18e83f1-2916-46f4-9b2a-048da2b7cb95",
-                "resourcePath": "rooms\\rMenu\\rMenu.yy",
+                "resourcePath": "rooms\\rTitle\\rTitle.yy",
                 "resourceType": "GMRoom"
             }
         },
@@ -268,6 +268,14 @@
                 "id": "889fbb83-ba60-4b03-a181-7b640de00afa",
                 "resourcePath": "views\\bbb0513d-f754-4715-a6be-47815e2ebc08.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "bf828b5f-b6bd-410d-bea1-2390b0cad210",
+            "Value": {
+                "id": "e3ba4a53-447a-474d-875e-23b3ef3927cb",
+                "resourcePath": "objects\\oMenuInGame\\oMenuInGame.yy",
+                "resourceType": "GMObject"
             }
         },
         {

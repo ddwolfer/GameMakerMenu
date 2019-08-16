@@ -98,9 +98,10 @@ switch(menuScreen){
 		
 	case menuScreen.option:
 		#region
-				//鍵盤返回
+		//鍵盤返回
 		if( keyboard_check_pressed( vk_escape ) ){
 			saveOptionSystem()
+			
 			menuScreen = menuScreen.main
 		}
 		if ( mouse_check_button_pressed(mb_left) ){

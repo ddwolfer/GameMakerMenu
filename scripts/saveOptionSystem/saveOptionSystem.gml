@@ -21,3 +21,4 @@ show_debug_message(saveStr)
 //釋放記憶體
 ds_map_destroy(wrapper)
 ds_map_destroy(map)
+
