@@ -7,10 +7,16 @@ var MY = mouse_y
 
 switch(menuScreen){
 	case menuScreen.newgame:
-		room_goto_next()
-	break
+		#region
+		//鍵盤返回
+		if( keyboard_check_pressed( vk_escape ) ){
+			menuScreen = menuScreen.main
+		}
+		#endregion
+		break
+		
 	case menuScreen.main:
-		#region main判斷
+		#region 
 		//上下控制光標位置 (鍵盤or控制器)
 		if(upMenu){
 			show_debug_message("UP")
@@ -44,15 +50,19 @@ switch(menuScreen){
 		}
 		#endregion
 		break
+		
 	case menuScreen.load:
+		#region
 		//鍵盤返回
 		if( keyboard_check_pressed( vk_escape ) ){
 			menuScreen = menuScreen.main
 		}
+		#endregion
 		break
 		
 	case menuScreen.option:
-		//鍵盤返回
+		#region
+				//鍵盤返回
 		if( keyboard_check_pressed( vk_escape ) ){
 			menuScreen = menuScreen.main
 		}
@@ -175,7 +185,9 @@ switch(menuScreen){
 				}	
 			}
 		}
+		#endregion
 		break
+		
 	case menuScreen.exitgame:
 		game_end()
 		break
