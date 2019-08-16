@@ -30,7 +30,7 @@ switch(menuScreen){
 			draw_set_color(c_white) //顏色設定
 			draw_set_font(MenuFont) //字體設定(包含大小)
 			draw_set_valign(fa_middle) //文字垂直置中
-			draw_text(textX, textY, mainMenuText[gameLanguage,line])
+			draw_text(textX, textY, mainMenuText[global.gameLanguage,line])
 		}
 		#endregion
 		break
@@ -53,11 +53,11 @@ switch(menuScreen){
 			draw_set_color(c_white)
 			draw_set_valign(fa_middle)
 			draw_set_font(MenuFont)
-			draw_text(DrawLoadBoxTitle_X*1.05 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), LoadTxT[gameLanguage,0]+string(line+1))
+			draw_text(DrawLoadBoxTitle_X*1.05 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), LoadTxT[global.gameLanguage,0]+string(line+1))
 			
 			draw_set_color(c_white)
 			draw_set_halign(fa_middle)
-			draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  " + EmptyTxT[gameLanguage,0] + "  ]")
+			draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  " + EmptyTxT[global.gameLanguage,0] + "  ]")
 			draw_set_halign(fa_left)
 			draw_set_valign(fa_top)
 		}
@@ -81,11 +81,11 @@ switch(menuScreen){
 			draw_set_color(c_white)
 			draw_set_valign(fa_middle)
 			draw_set_font(MenuFont)
-			draw_text(DrawLoadBoxTitle_X*1.05 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), LoadTxT[gameLanguage,0]+string(line+1))
+			draw_text(DrawLoadBoxTitle_X*1.05 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), LoadTxT[global.gameLanguage,0]+string(line+1))
 			
 			draw_set_color(c_white)
 			draw_set_halign(fa_middle)
-			draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  " + EmptyTxT[gameLanguage,0] + "  ]")
+			draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  " + EmptyTxT[global.gameLanguage,0] + "  ]")
 			draw_set_halign(fa_left)
 			draw_set_valign(fa_top)
 		}
@@ -99,7 +99,7 @@ switch(menuScreen){
 		//上左側文字
 		for(var line = 0 ; line < array_length_1d(optionMenuText) ; line++ ){
 			draw_set_font(optionFont)
-			draw_text(DrawOptionTextStart_X ,DrawOptionTextStart_Y + DrawOptionTextBoxHeight*line ,optionMenuText[gameLanguage,line])
+			draw_text(DrawOptionTextStart_X ,DrawOptionTextStart_Y + DrawOptionTextBoxHeight*line ,optionMenuText[global.gameLanguage,line])
 		}
 		//上右側內容
 		for(var line = 0 ; line < array_length_1d(optionMenuText) ; line++ ){
@@ -116,7 +116,7 @@ switch(menuScreen){
 						draw_text( Text_X , Text_Y , resolution[3])
 						draw_set_color(c_white)
 					}else{
-						switch(windowsSize){
+						switch(global.gameResolution){
 						case 1:
 							draw_text( Text_X , Text_Y , resolution[0])
 							break
@@ -156,7 +156,7 @@ switch(menuScreen){
 					draw_sprite_stretched(sMenuArrowRight,0, DrawOptionContentEND_X, DrawOptionContentStart_Y*0.85 + DrawOptionContentBoxHeight*line , DrawOptionArrow_W, DrawOptionArrow_W)
 					
 					draw_set_halign(fa_center)
-					draw_text( Text_X, Text_Y , LanguageOption[ gameLanguage ])
+					draw_text( Text_X, Text_Y , LanguageOption[ global.gameLanguage ])
 					draw_set_halign(fa_left)
 					break
 				case 3: //音樂
@@ -164,7 +164,7 @@ switch(menuScreen){
 					draw_sprite_stretched(sMenuArrowRight,0, DrawOptionContentEND_X, DrawOptionContentStart_Y*0.85 + DrawOptionContentBoxHeight*line , DrawOptionArrow_W, DrawOptionArrow_W)
 					
 					draw_set_halign(fa_center)
-					draw_text( Text_X, Text_Y , string(gameMusic) + "%")
+					draw_text( Text_X, Text_Y , string(global.gameMusic) + "%")
 					draw_set_halign(fa_left)
 					break
 				case 4: //音效
@@ -172,7 +172,7 @@ switch(menuScreen){
 					draw_sprite_stretched(sMenuArrowRight,0, DrawOptionContentEND_X, DrawOptionContentStart_Y*0.85 + DrawOptionContentBoxHeight*line , DrawOptionArrow_W, DrawOptionArrow_W)
 					
 					draw_set_halign(fa_center)
-					draw_text( Text_X, Text_Y , string(gameSFX)+"%")
+					draw_text( Text_X, Text_Y , string(global.gameSFX)+"%")
 					draw_set_halign(fa_left)
 					break			
 			}

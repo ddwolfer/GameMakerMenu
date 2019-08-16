@@ -57,6 +57,8 @@ switch(menuScreen){
 		if( keyboard_check_pressed( vk_escape ) ){
 			menuScreen = menuScreen.main
 		}
+		
+		
 		#endregion
 		break
 		
@@ -64,6 +66,7 @@ switch(menuScreen){
 		#region
 				//鍵盤返回
 		if( keyboard_check_pressed( vk_escape ) ){
+			saveOptionSystem()
 			menuScreen = menuScreen.main
 		}
 		if ( mouse_check_button_pressed(mb_left) ){
@@ -73,43 +76,43 @@ switch(menuScreen){
 					#region
 					if( (MX>= optionContentStart_X && MX <= optionContentStart_X + optionArrow_W) &&
 						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-							switch(windowsSize){
+							switch(global.gameResolution){
 								case 1:
 									window_set_size(1920,1080)
-									windowsSize = 3
+									global.gameResolution = 3
 									break
 								case 2:
 									window_set_size(640,360)
-									windowsSize = 1
+									global.gameResolution = 1
 									break
 								case 2.25:
 									window_set_size(1280,720)
-									windowsSize = 2
+									global.gameResolution = 2
 									break
 								case 3:
 									window_set_size(1440,810)
-									windowsSize = 2.25
+									global.gameResolution = 2.25
 									break
 							}
 					}
 					if( (MX>= optionContentEND_X && MX <= optionContentEND_X + optionArrow_W) &&
 						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-							switch(windowsSize){
+							switch(global.gameResolution){
 							case 1:
 								window_set_size(1280,720)
-								windowsSize = 2
+								global.gameResolution = 2
 								break
 							case 2:
 								window_set_size(1440,810)
-								windowsSize = 2.25
+								global.gameResolution = 2.25
 								break
 							case 2.25:
 								window_set_size(1920,1080)
-								windowsSize = 3
+								global.gameResolution = 3
 								break
 							case 3:
 								window_set_size(640,360)
-								windowsSize = 1
+								global.gameResolution = 1
 								break
 						}
 					}
@@ -120,8 +123,10 @@ switch(menuScreen){
 						(MY>= FSy1 && MY <= FSy2) ){
 						if(window_get_fullscreen()){
 							window_set_fullscreen(0)
+							global.gameFullScreen = 0
 						}else{
 							window_set_fullscreen(1)
+							global.gameFullScreen = 1
 						}
 					}
 					break
@@ -129,20 +134,20 @@ switch(menuScreen){
 					#region
 					if( (MX>= optionContentStart_X && MX <= optionContentStart_X + optionArrow_W) &&
 						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-						if(gameLanguage == 0){
-							gameLanguage = array_length_1d(LanguageOption) - 1
+						if(global.gameLanguage == 0){
+							global.gameLanguage = array_length_1d(LanguageOption) - 1
 						}else{
-							gameLanguage -= 1
+							global.gameLanguage -= 1
 						}
 						setAllFont()
 					
 					}
 					if( (MX>= optionContentEND_X && MX <= optionContentEND_X + optionArrow_W) &&
 						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-						if(gameLanguage == array_length_1d(LanguageOption) - 1){
-							gameLanguage = 0
+						if(global.gameLanguage == array_length_1d(LanguageOption) - 1){
+							global.gameLanguage = 0
 						}else{
-							gameLanguage += 1
+							global.gameLanguage += 1
 						}	
 						setAllFont()
 					}
@@ -152,14 +157,14 @@ switch(menuScreen){
 					#region
 					if( (MX>= optionContentStart_X && MX <= optionContentStart_X + optionArrow_W) &&
 						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-						if(gameMusic > 0 ){
-							gameMusic -= 10
+						if(global.gameMusic > 0 ){
+							global.gameMusic -= 10
 						}					
 					}
 					if( (MX>= optionContentEND_X && MX <= optionContentEND_X + optionArrow_W) &&
 						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-						if(gameMusic < 100){
-							gameMusic += 10
+						if(global.gameMusic < 100){
+							global.gameMusic += 10
 						}
 					}
 					#endregion
@@ -168,16 +173,16 @@ switch(menuScreen){
 					#region
 					if( (MX>= optionContentStart_X && MX <= optionContentStart_X + optionArrow_W) &&
 						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-						if(gameSFX > 0){
-							gameSFX -= 10
+						if(global.gameSFX > 0){
+							global.gameSFX -= 10
 						}
 							
 					
 					}
 					if( (MX>= optionContentEND_X && MX <= optionContentEND_X + optionArrow_W) &&
 						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-						if(gameSFX < 100){
-							gameSFX += 10
+						if(global.gameSFX < 100){
+							global.gameSFX += 10
 						}	
 					}
 					#endregion

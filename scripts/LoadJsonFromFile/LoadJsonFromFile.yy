@@ -1,8 +1,8 @@
 {
-    "id": "b8ba44b0-4aab-4a1f-a8d7-8dc5db8580b4",
+    "id": "335b4d22-d7f6-411c-957b-461075a5852e",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "saveSystem",
+    "name": "LoadJsonFromFile",
     "IsCompatibility": false,
     "IsDnD": false
 }
