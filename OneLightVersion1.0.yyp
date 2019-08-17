@@ -183,6 +183,14 @@
             }
         },
         {
+            "Key": "72ed3c54-f520-4bce-8f9e-272b92d9d8d3",
+            "Value": {
+                "id": "653d6a41-62fa-4ba8-84fc-e70bd369a8a1",
+                "resourcePath": "objects\\oLoadData\\oLoadData.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "8572d87b-8ba3-4baf-af7d-1b9af0fbc271",
             "Value": {
                 "id": "58d81edf-02a3-48c1-a4ba-64b3d0cf9ccd",
@@ -223,6 +231,14 @@
             }
         },
         {
+            "Key": "9d79d1b7-0f3f-4673-990e-bffcf30b0ac6",
+            "Value": {
+                "id": "cadbf7fc-2ff0-41d2-968f-cbafef0b6d8a",
+                "resourcePath": "rooms\\rLoadData\\rLoadData.yy",
+                "resourceType": "GMRoom"
+            }
+        },
+        {
             "Key": "9f2c8468-2c26-4094-8d31-76c03688aa52",
             "Value": {
                 "id": "9495dd30-f6e7-49b4-8f9a-40ac60b76968",
@@ -255,6 +271,14 @@
             }
         },
         {
+            "Key": "b5883f5c-4292-4616-a7ec-cda2978ff9d5",
+            "Value": {
+                "id": "81a819a4-f354-4d5f-8933-63844458aa0c",
+                "resourcePath": "scripts\\loadGameFile\\loadGameFile.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "b8ba44b0-4aab-4a1f-a8d7-8dc5db8580b4",
             "Value": {
                 "id": "47112d84-441c-4725-9a86-7c9b864159bb",
@@ -284,6 +308,14 @@
                 "id": "a969b10f-8a71-42f3-a56a-83282e9bf7d0",
                 "resourcePath": "options\\windows\\options_windows.yy",
                 "resourceType": "GMWindowsOptions"
+            }
+        },
+        {
+            "Key": "cdc42325-9b6a-4129-90e8-42982915042b",
+            "Value": {
+                "id": "a608da2e-e216-4b5a-830c-f86bcdd74c76",
+                "resourcePath": "scripts\\saveGameFile\\saveGameFile.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -381,7 +413,9 @@
         "68ca9020-9481-4249-ac39-e91ef7e82a59",
         "263c3983-2009-4136-9354-b1623b4660e4",
         "335b4d22-d7f6-411c-957b-461075a5852e",
-        "b8ba44b0-4aab-4a1f-a8d7-8dc5db8580b4"
+        "b8ba44b0-4aab-4a1f-a8d7-8dc5db8580b4",
+        "cdc42325-9b6a-4129-90e8-42982915042b",
+        "b5883f5c-4292-4616-a7ec-cda2978ff9d5"
     ],
     "tutorial": ""
 }

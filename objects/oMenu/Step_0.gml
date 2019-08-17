@@ -9,7 +9,7 @@ switch(menuScreen){
 	case menuScreen.newgame:
 		#region
 		//鍵盤返回
-		if( keyboard_check_pressed( vk_escape ) ){
+		if( select ){
 			menuScreen = menuScreen.main
 		}
 		//3個方框
@@ -58,7 +58,7 @@ switch(menuScreen){
 			menuScreen = MainMenuCursor
 		}
 		//確認點擊 (滑鼠)
-		if ( mouse_check_button_pressed(mb_left) ){
+		if ( mouseLeftClick ){
 			for(var line = 0 ; line < array_length_1d(mainMenuText) ; line++){
 				//與Draw GUI的實心一樣寫法
 				if( ( MX>= MainTextStart_X							&&	MX<= MainTextStart_X + TextBoxWidth )			&&
@@ -73,11 +73,11 @@ switch(menuScreen){
 	case menuScreen.load:
 		#region
 		//鍵盤返回
-		if( keyboard_check_pressed( vk_escape ) ){
+		if( select ){
 			menuScreen = menuScreen.main
 		}
 		//3個方框
-		if ( mouse_check_button_pressed(mb_left) ){
+		if ( mouseLeftClick ){
 			for(var line = 0 ; line < 3 ; line++){
 				//判斷滑鼠位置
 				if( ( MX >= LoadStart_X											&& MX <= DrawLoadStart_X+DrawLoadBoxWidth )	&& 
@@ -99,12 +99,12 @@ switch(menuScreen){
 	case menuScreen.option:
 		#region
 		//鍵盤返回
-		if( keyboard_check_pressed( vk_escape ) ){
+		if( select ){
 			saveOptionSystem()
 			
 			menuScreen = menuScreen.main
 		}
-		if ( mouse_check_button_pressed(mb_left) ){
+		if ( mouseLeftClick ){
 			for(var line = 0 ; line < array_length_1d(optionMenuText) ; line++ ){
 				switch(line){
 					case 0://解析度

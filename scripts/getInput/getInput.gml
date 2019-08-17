@@ -10,3 +10,4 @@ leftMenu = keyboard_check_pressed(vk_left);
 rightMenu = keyboard_check_pressed(vk_right);
 
 mouseLeft = mouse_check_button(mb_left);
+mouseLeftClick = mouse_check_button_pressed(mb_left)

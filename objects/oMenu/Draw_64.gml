@@ -216,7 +216,6 @@ switch(menuScreen){
 					draw_set_halign(fa_left)
 					break			
 			}
-
 		}
 		#endregion
 		break
