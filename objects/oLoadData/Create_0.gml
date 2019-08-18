@@ -47,6 +47,10 @@ if(file_exists("saveSystem.sav")){ //如果存檔存在
 #endregion
 global.windowsSize = window_get_width()/640 //視窗大小 最小為640*360 以此為底算倍數
 
+//釋放記憶體
+ds_map_destroy(wrapper)
+ds_map_destroy(map)
+
 if(room == rLoadData){
 	room_goto_next()
 }

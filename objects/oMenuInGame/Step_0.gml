@@ -41,11 +41,12 @@ switch(IGMenuScreen){
 							IGMenuScreen = IGMenuScreen.option
 						break
 						case 2: //儲存&結束
+							saveGameFile(global.playingSave)
+							IGMenuScreen = IGMenuScreen.off
 							with(oGame){
 								targetRoom = rTitle
 								doTransition = true
 							}
-							IGMenuScreen = IGMenuScreen.off
 						break
 					}
 				}

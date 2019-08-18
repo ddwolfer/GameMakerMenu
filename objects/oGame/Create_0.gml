@@ -9,7 +9,7 @@ transitionAlpha = 0
 doTransition = false
 targetRoom = noone
 
-playWithSave = 0
+global.playingSave = 0
 
 FreezeControl = false
 FreezeMove = false

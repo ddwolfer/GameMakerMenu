@@ -22,10 +22,10 @@ switch(menuScreen){
 					if(file_exists(filename)){
 						//播放不能選擇的聲音
 					}else{
+						global.playingSave = line+1
 						with(oGame){
 							targetRoom = rStart
 							doTransition = true
-							playWithSave = line+1
 						}
 					}
 				}
@@ -84,9 +84,9 @@ switch(menuScreen){
 					( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
 					filename = "savefile0" + string(line+1) + ".sav"
 					if(file_exists(filename)){
-						targetRoom = rStart
-						doTransition = true
-						playWithSave = line+1
+						loadGameFile()
+						oGame.doTransition = true
+						global.playingSave = line + 1
 					}else{
 						//播放不能選擇的聲音
 					}
