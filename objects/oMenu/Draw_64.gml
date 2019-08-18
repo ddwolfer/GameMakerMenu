@@ -3,7 +3,7 @@
 //抓滑鼠位置 window_mouse_get()會抓Viewport絕對位置 mouse_x會抓RoomXY絕對位置
 var MX = mouse_x
 var MY = mouse_y
-
+/*
 if(getsaveTime){
 	loadGameFile(1)
 	saveTime[0] = oInGameTime.HourStr + ":" + oInGameTime.MinStr + ":" + oInGameTime.SecStr
@@ -12,7 +12,7 @@ if(getsaveTime){
 	loadGameFile(3)
 	saveTime[2] = oInGameTime.HourStr + ":" + oInGameTime.MinStr + ":" + oInGameTime.SecStr
 	getsaveTime = 0
-}
+}*/
 
 switch(menuScreen){
 	case menuScreen.main:
@@ -362,5 +362,13 @@ switch(menuScreen){
 		draw_set_valign(fa_top)
 		
 		#endregion
+		break
+		
+	case menuScreen.loading:
+		draw_set_halign(fa_center)
+		draw_set_valign(fa_center)
+		draw_text(320 * global.windowsSize,180 * global.windowsSize,"It's loading time YAAAAAAAAAAAAAAAA")
+		draw_set_valign(fa_top)
+		draw_set_halign(fa_left)
 		break
 }

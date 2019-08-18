@@ -9,9 +9,10 @@ enum menuScreen{
 	option = 2,
 	exitgame = 3,
 	main = 4,
-	deleteGame = 5
+	deleteGame = 5,
+	loading = 6
 }
-menuScreen = menuScreen.main
+menuScreen = menuScreen.loading
 #region 文字內容
 //語言
 LanguageOption[0] = "English"
@@ -161,6 +162,7 @@ saveTime[0] = "00:00:00"
 saveTime[1] = "00:00:00"
 saveTime[2] = "00:00:00"
 getsaveTime = 0
+
 alarm[1] = 30
 
 #endregion

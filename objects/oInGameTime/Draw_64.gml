@@ -18,23 +18,8 @@ if(Mins % 60 == 0 && Mins != 0){
 	Hours++
 	Mins = 0
 }
-if(Sec < 10){
-	SecStr = "0"+ string(Sec)
-}else{
-	SecStr = string(Sec)
-}
-if(Mins < 10){
-	MinStr = "0" + string(Mins)
-}else{
-	MinStr = string(Mins)
-}
-if(Hours < 10){
-	HourStr = "0" + string(Hours)
-}else{
-	HourStr = string(Hours)
-}
 
 if(room!=rTitle){
 	draw_set_font(fontDefault)
-	draw_text(25,50,HourStr + ":" + MinStr + ":" + SecStr )
+	draw_text(25,50, timeToString(Hours, Mins, Sec) )
 }

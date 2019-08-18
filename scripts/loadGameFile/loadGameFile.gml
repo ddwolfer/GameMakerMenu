@@ -30,9 +30,11 @@ if(file_exists(saveFileName)){
 	}else{
 		oGame.targetRoom = rStart
 	}
-
+	show_debug_message( "map:"+string(map[?"gameTimeHours"]) + string(map[?"gameTimeMins"]) + string(map[?"gameTimeSec"]) )
+	
 	//釋放記憶體
 	ds_map_destroy(wrapper)
 	ds_map_destroy(map)
 }
+return true
 

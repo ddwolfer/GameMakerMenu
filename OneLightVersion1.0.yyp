@@ -367,6 +367,14 @@
             }
         },
         {
+            "Key": "f4b2ac19-2834-466f-a1e0-349df744a78a",
+            "Value": {
+                "id": "c133dd09-0046-41a1-a5b6-06c8367d63cb",
+                "resourcePath": "scripts\\timeToString\\timeToString.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "f6cd03aa-b242-40b8-b8fa-95d5fa499b99",
             "Value": {
                 "id": "884b6d0e-afea-4f41-b82d-9747de52062e",
@@ -424,7 +432,8 @@
         "b8ba44b0-4aab-4a1f-a8d7-8dc5db8580b4",
         "cdc42325-9b6a-4129-90e8-42982915042b",
         "b5883f5c-4292-4616-a7ec-cda2978ff9d5",
-        "44e687ec-150a-487e-ad55-a05b6b6e6ddd"
+        "44e687ec-150a-487e-ad55-a05b6b6e6ddd",
+        "f4b2ac19-2834-466f-a1e0-349df744a78a"
     ],
     "tutorial": ""
 }

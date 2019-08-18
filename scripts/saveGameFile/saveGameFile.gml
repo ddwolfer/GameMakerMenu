@@ -22,3 +22,4 @@ show_debug_message(saveStr)
 ds_map_destroy(wrapper)
 ds_map_destroy(map)
 
+return true

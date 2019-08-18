@@ -5,6 +5,11 @@ getInput()
 var MX = mouse_x
 var MY = mouse_y
 
+if( getsaveTime > 2 ){
+	getsaveTime = 0
+	menuScreen = menuScreen.main
+}
+
 switch(menuScreen){
 	case menuScreen.newgame:
 		#region
@@ -74,7 +79,6 @@ switch(menuScreen){
 				//與Draw GUI的實心一樣寫法
 				if( ( MX>= MainTextStart_X							&&	MX<= MainTextStart_X + TextBoxWidth )			&&
 			        ( MY>= MainTextStart_Y + (line*TextBoxHeight)	&&	MY<= MainTextStart_Y + ((line+1)*TextBoxHeight)) ){
-					getsaveTime = 1
 					menuScreen = MainMenuCursor
 				}
 			}
