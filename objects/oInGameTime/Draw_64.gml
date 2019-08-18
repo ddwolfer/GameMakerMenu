@@ -34,6 +34,7 @@ if(Hours < 10){
 	HourStr = string(Hours)
 }
 
-
-draw_set_font(fontDefault)
-draw_text(25,50,HourStr + ":" + MinStr + ":" + SecStr )
+if(room!=rTitle){
+	draw_set_font(fontDefault)
+	draw_text(25,50,HourStr + ":" + MinStr + ":" + SecStr )
+}

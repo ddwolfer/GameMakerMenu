@@ -8,7 +8,8 @@ enum menuScreen{
 	load = 1,
 	option = 2,
 	exitgame = 3,
-	main = 4
+	main = 4,
+	deleteGame = 5
 }
 menuScreen = menuScreen.main
 #region 文字內容
@@ -53,10 +54,23 @@ resolution[0] = "640*360"
 resolution[1] = "1280*720" 
 resolution[2] = "1440*810" 
 resolution[3] = "1920*1080" 
+
+//刪除用文字
+DeleteAlarm[0, 0] = "Sure to delete this save?"
+DeleteAlarm[1, 0] = "確定要刪除這個存檔嗎?"
+
+YesOrNo [0, 0] ="No"
+YesOrNo [0, 1] ="Yes"
+
+YesOrNo [1, 0] ="否"
+YesOrNo [1, 1] ="是"
+
 #endregion
 
 //基礎設定 (如果有開過遊戲就讀system)
 MainMenuCursor = 0
+deleteFromLoad = 0
+deleteFromNew = 0
 //文字設定
 MenuFontSize = 11 * global.windowsSize
 optionFontSize = 15 * global.windowsSize
@@ -122,6 +136,11 @@ LoadBoxWidth = 388
 LoadBoxHeight = 60
 LoadBoxSpace = 24
 
+deleteStart_X = 520
+deleteEnd_X = deleteStart_X + 18
+deleteStart_Y = 89
+deleteEnd_Y = deleteStart_Y + 18
+
 DrawLoadBoxTitle_X = 111 * global.windowsSize
 DrawLoadBoxTitle_Y = 56 * global.windowsSize
 DrawLoadBoxTitle_W = 50 * global.windowsSize
@@ -133,9 +152,53 @@ DrawLoadBoxWidth = LoadBoxWidth * global.windowsSize
 DrawLoadBoxHeight = LoadBoxHeight * global.windowsSize
 DrawLoadBoxSpace = LoadBoxSpace * global.windowsSize
 
+DrawDeleteStart_X = deleteStart_X * global.windowsSize
+DrawDeleteEnd_X = deleteEnd_X * global.windowsSize
+DrawDeleteStart_Y = deleteStart_Y * global.windowsSize
+DrawDeleteEnd_Y = deleteEnd_Y * global.windowsSize
+
+saveTime[0] = "00:00:00"
+saveTime[1] = "00:00:00"
+saveTime[2] = "00:00:00"
+getsaveTime = 0
+alarm[1] = 30
+
 #endregion
 
+#region delete page 設定
+DeleteBackgroundX1 = 200 * global.windowsSize
+DeleteBackgroundX2 = 440 * global.windowsSize
+DeleteBackgroundY1 = 100 * global.windowsSize
+DeleteBackgroundY2 = 220 * global.windowsSize
 
+DrawDeleteAlarm_X = 320 * global.windowsSize
+DrawDeleteAlarm_Y = ((360/2) - 40) * global.windowsSize
+
+DrawYesText_X = ((640/2) - 40)  * global.windowsSize
+DrawNoText_X =  ((640/2) + 40) * global.windowsSize
+DrawCheckText_Y = (360/2 + 10) * global.windowsSize
+
+YesBoxX1 = 250
+YesBoxX2 = 310
+YesBoxY1 = 175
+YesBoxY2 = 200
+
+NoBoxX1 = 330
+NoBoxX2 = 390
+NoBoxY1 = 175
+NoBoxY2 = 200
+
+DrawYesBoxX1 =YesBoxX1 * global.windowsSize
+DrawYesBoxX2 =YesBoxX2 * global.windowsSize
+DrawYesBoxY1 =YesBoxY1 * global.windowsSize
+DrawYesBoxY2 =YesBoxY2 * global.windowsSize
+
+DrawNoBoxX1 =NoBoxX1 * global.windowsSize
+DrawNoBoxX2 =NoBoxX2 * global.windowsSize
+DrawNoBoxY1 =NoBoxY1 * global.windowsSize
+DrawNoBoxY2 =NoBoxY2 * global.windowsSize
+
+#endregion
 
 
 

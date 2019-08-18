@@ -15,20 +15,31 @@ switch(menuScreen){
 		//3個方框
 		if ( mouse_check_button_pressed(mb_left) ){
 			for(var line = 0 ; line < 3 ; line++){
+				filename = "savefile0" + string(line+1) + ".sav"
 				//判斷滑鼠位置
 				if( ( MX >= LoadStart_X											&& MX <= DrawLoadStart_X+DrawLoadBoxWidth )	&& 
 					( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
-					filename = "savefile0" + string(line+1) + ".sav"
 					if(file_exists(filename)){
 						//播放不能選擇的聲音
 					}else{
 						global.playingSave = line+1
+						oInGameTime.Hours = 0
+						oInGameTime.Mins = 0
+						oInGameTime.Sec = 0
 						with(oGame){
 							targetRoom = rStart
 							doTransition = true
 						}
 					}
 				}
+				//按下刪除按鍵
+				if( ( MX >= deleteStart_X											&& MX <= deleteEnd_X )	&& 
+					( MY >= deleteStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= deleteEnd_Y + (line* (LoadBoxHeight+LoadBoxSpace)))  ){
+					//file_delete(filename)
+					deleteFromNew = 1
+					deletefile = line+1
+					menuScreen = menuScreen.deleteGame
+				}	
 			}
 		}
 		#endregion
@@ -63,6 +74,7 @@ switch(menuScreen){
 				//與Draw GUI的實心一樣寫法
 				if( ( MX>= MainTextStart_X							&&	MX<= MainTextStart_X + TextBoxWidth )			&&
 			        ( MY>= MainTextStart_Y + (line*TextBoxHeight)	&&	MY<= MainTextStart_Y + ((line+1)*TextBoxHeight)) ){
+					getsaveTime = 1
 					menuScreen = MainMenuCursor
 				}
 			}
@@ -80,17 +92,25 @@ switch(menuScreen){
 		if ( mouseLeftClick ){
 			for(var line = 0 ; line < 3 ; line++){
 				//判斷滑鼠位置
-				if( ( MX >= LoadStart_X											&& MX <= DrawLoadStart_X+DrawLoadBoxWidth )	&& 
+				if( ( MX >= LoadStart_X											&& MX <= LoadStart_X+LoadBoxWidth )	&& 
 					( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
 					filename = "savefile0" + string(line+1) + ".sav"
 					if(file_exists(filename)){
-						loadGameFile()
+						loadGameFile(line+1)
 						oGame.doTransition = true
 						global.playingSave = line + 1
 					}else{
 						//播放不能選擇的聲音
 					}
 				}
+				//按下刪除按鍵
+				if( ( MX >= deleteStart_X											&& MX <= deleteEnd_X )	&& 
+					( MY >= deleteStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= deleteEnd_Y + (line* (LoadBoxHeight+LoadBoxSpace)))  ){
+					//file_delete(filename)
+					deleteFromLoad = 1
+					deletefile = line+1
+					menuScreen = menuScreen.deleteGame
+				}	
 			}
 		}
 		#endregion
@@ -228,6 +248,52 @@ switch(menuScreen){
 		#endregion
 		break
 		
+	case menuScreen.deleteGame:
+		#region
+		#region
+		//鍵盤返回
+		if( select && deleteFromNew){
+			deleteFromNew = 0
+			menuScreen = menuScreen.newgame
+		}else if(select && deleteFromLoad){
+			deleteFromLoad = 0
+			menuScreen = menuScreen.load
+		}
+		#endregion
+		//滑鼠判定
+		if(mouseLeftClick){
+			filename = "savefile0" + string(deletefile) + ".sav"
+			//是 yes
+			if( (MX >= YesBoxX1 && MX <= YesBoxX2) && 
+				(MY >= YesBoxY1 && MY <= YesBoxY2 ) ){
+				show_debug_message("delete file : " + string(filename))
+				file_delete(filename)
+				//返回
+				if(deleteFromNew){
+					deleteFromNew = 0
+					menuScreen = menuScreen.newgame
+				}else if(deleteFromLoad){
+					deleteFromLoad = 0
+					menuScreen = menuScreen.load
+				}
+			}
+			//否 no
+			if( (MX >= NoBoxX1 && MX <= NoBoxX2) && 
+				(MY >= NoBoxY1 && MY <= NoBoxY2 ) ){
+				//返回
+				if(deleteFromNew){
+					deleteFromNew = 0
+					menuScreen = menuScreen.newgame
+				}else if(deleteFromLoad){
+					deleteFromLoad = 0
+					menuScreen = menuScreen.load
+				}
+			}
+		}
+		#endregion
+	
+		break
+	
 	case menuScreen.exitgame:
 		game_end()
 		break

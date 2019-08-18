@@ -4,6 +4,16 @@
 var MX = mouse_x
 var MY = mouse_y
 
+if(getsaveTime){
+	loadGameFile(1)
+	saveTime[0] = oInGameTime.HourStr + ":" + oInGameTime.MinStr + ":" + oInGameTime.SecStr
+	loadGameFile(2)
+	saveTime[1] = oInGameTime.HourStr + ":" + oInGameTime.MinStr + ":" + oInGameTime.SecStr
+	loadGameFile(3)
+	saveTime[2] = oInGameTime.HourStr + ":" + oInGameTime.MinStr + ":" + oInGameTime.SecStr
+	getsaveTime = 0
+}
+
 switch(menuScreen){
 	case menuScreen.main:
 		#region main繪圖
@@ -48,13 +58,11 @@ switch(menuScreen){
 			draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,0)
 			draw_set_alpha(1)
 			//判斷滑鼠位置
-			if( ( MX >= LoadStart_X											&& MX <= DrawLoadStart_X+DrawLoadBoxWidth )	&& 
+			if( ( MX >= LoadStart_X											&& MX <= LoadStart_X + LoadBoxWidth )	&& 
 				( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
+					
 				draw_set_color(c_white)
-				draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
-				draw_rectangle(DrawLoadStart_X+1, DrawLoadStart_Y+1 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-1,DrawLoadStart_Y-1 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
-				draw_rectangle(DrawLoadStart_X+2, DrawLoadStart_Y+2 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-2,DrawLoadStart_Y-2 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
-				draw_rectangle(DrawLoadStart_X+3, DrawLoadStart_Y+3 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-3,DrawLoadStart_Y-3 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
+				draw_rectengle_width(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,4,c_white)
 			}
 			//標題方框
 			draw_set_color($384373)
@@ -69,9 +77,28 @@ switch(menuScreen){
 			if(file_exists(filename)){
 				draw_set_color(c_white)
 				draw_set_halign(fa_middle)
-				draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  有存檔喔  ]")
+				
+				draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  game time : "+ string(saveTime[line]) +"  ]")
 				draw_set_halign(fa_left)
 				draw_set_valign(fa_top)
+				//畫刪除的方框
+				if( ( MX >= deleteStart_X											&& MX <= deleteEnd_X )	&& 
+					( MY >= deleteStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= deleteEnd_Y + (line* (LoadBoxHeight+LoadBoxSpace)))  ){
+					draw_set_color(c_red)
+					draw_rectangle(DrawDeleteStart_X , DrawDeleteStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , DrawDeleteEnd_X , DrawDeleteEnd_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), 0)
+					draw_set_color(c_white)
+				}else{
+					draw_set_color($00009B)
+					draw_rectangle(DrawDeleteStart_X , DrawDeleteStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , DrawDeleteEnd_X , DrawDeleteEnd_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), 0)
+					draw_set_color(c_white)
+				}
+				
+				//畫刪除的叉叉
+				lineVar = 3
+				draw_line_width( DrawDeleteStart_X + (lineVar*global.windowsSize), DrawDeleteStart_Y + (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , 
+								 DrawDeleteEnd_X - (lineVar*global.windowsSize), DrawDeleteEnd_Y - (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , 5 )
+				draw_line_width( DrawDeleteEnd_X - (lineVar*global.windowsSize), DrawDeleteStart_Y + (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , 
+								 DrawDeleteStart_X + (lineVar*global.windowsSize), DrawDeleteEnd_Y - (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), 5 )
 			}else{
 				draw_set_color(c_white)
 				draw_set_halign(fa_middle)
@@ -96,7 +123,7 @@ switch(menuScreen){
 			draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,0)
 			draw_set_alpha(1)
 			//判斷滑鼠位置
-			if( ( MX >= LoadStart_X											&& MX <= DrawLoadStart_X+DrawLoadBoxWidth )	&& 
+			if( ( MX >= LoadStart_X											&& MX <= LoadStart_X + LoadBoxWidth )	&& 
 				( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
 				draw_set_color(c_white)
 				draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
@@ -117,9 +144,27 @@ switch(menuScreen){
 			if(file_exists(filename)){
 				draw_set_color(c_white)
 				draw_set_halign(fa_middle)
-				draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  有存檔喔  ]")
+				draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  game time : "+ string(saveTime[line]) +"  ]")
 				draw_set_halign(fa_left)
 				draw_set_valign(fa_top)
+				//畫刪除的方框
+				if( ( MX >= deleteStart_X											&& MX <= deleteEnd_X )	&& 
+					( MY >= deleteStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= deleteEnd_Y + (line* (LoadBoxHeight+LoadBoxSpace)))  ){
+					draw_set_color(c_red)
+					draw_rectangle(DrawDeleteStart_X , DrawDeleteStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , DrawDeleteEnd_X , DrawDeleteEnd_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), 0)
+					draw_set_color(c_white)
+				}else{
+					draw_set_color($00009B)
+					draw_rectangle(DrawDeleteStart_X , DrawDeleteStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , DrawDeleteEnd_X , DrawDeleteEnd_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), 0)
+					draw_set_color(c_white)
+				}
+				
+				//畫刪除的叉叉
+				lineVar = 3
+				draw_line_width( DrawDeleteStart_X + (lineVar*global.windowsSize), DrawDeleteStart_Y + (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , 
+								 DrawDeleteEnd_X - (lineVar*global.windowsSize), DrawDeleteEnd_Y - (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , 5 )
+				draw_line_width( DrawDeleteEnd_X - (lineVar*global.windowsSize), DrawDeleteStart_Y + (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , 
+								 DrawDeleteStart_X + (lineVar*global.windowsSize), DrawDeleteEnd_Y - (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), 5 )
 			}else{
 				draw_set_color(c_white)
 				draw_set_halign(fa_middle)
@@ -217,6 +262,105 @@ switch(menuScreen){
 					break			
 			}
 		}
+		#endregion
+		break
+		
+	case menuScreen.deleteGame:
+		#region//原本的背景
+		//上底色
+		draw_sprite_stretched(MenuOptionBackground, 0, DrawOptionBackground_X , DrawOptionBackground_Y, DrawOptionBackground_W, DrawOptionBackground_H )
+		
+		//3個方框
+		for(var line = 0 ; line < 3 ; line++){
+			//存檔方框
+			draw_set_color($ACB069)
+			draw_set_alpha(0.7)
+			draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,0)
+			draw_set_alpha(1)
+			//判斷滑鼠位置
+			if( ( MX >= LoadStart_X											&& MX <= LoadStart_X + LoadBoxWidth )	&& 
+				( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
+					
+				draw_set_color(c_white)
+				draw_rectengle_width(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,4,c_white)
+			}
+			//標題方框
+			draw_set_color($384373)
+			draw_rectangle(DrawLoadBoxTitle_X, DrawLoadBoxTitle_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadBoxTitle_X + DrawLoadBoxTitle_W,DrawLoadBoxTitle_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxTitle_H,0)
+			//標題文字
+			draw_set_color(c_white)
+			draw_set_valign(fa_middle)
+			draw_set_font(MenuFont)
+			draw_text(DrawLoadBoxTitle_X*1.05 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), LoadTxT[global.gameLanguage,0]+string(line+1))
+			//空存檔
+			filename = "savefile0" + string(line+1) + ".sav"
+			if(file_exists(filename)){
+				draw_set_color(c_white)
+				draw_set_halign(fa_middle)
+				
+				draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  game time : "+ string(saveTime[line]) +"  ]")
+				draw_set_halign(fa_left)
+				draw_set_valign(fa_top)
+				//畫刪除的方框
+				if( ( MX >= deleteStart_X											&& MX <= deleteEnd_X )	&& 
+					( MY >= deleteStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= deleteEnd_Y + (line* (LoadBoxHeight+LoadBoxSpace)))  ){
+					draw_set_color(c_red)
+					draw_rectangle(DrawDeleteStart_X , DrawDeleteStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , DrawDeleteEnd_X , DrawDeleteEnd_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), 0)
+					draw_set_color(c_white)
+				}else{
+					draw_set_color($00009B)
+					draw_rectangle(DrawDeleteStart_X , DrawDeleteStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , DrawDeleteEnd_X , DrawDeleteEnd_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), 0)
+					draw_set_color(c_white)
+				}
+				
+				//畫刪除的叉叉
+				lineVar = 3
+				draw_line_width( DrawDeleteStart_X + (lineVar*global.windowsSize), DrawDeleteStart_Y + (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , 
+								 DrawDeleteEnd_X - (lineVar*global.windowsSize), DrawDeleteEnd_Y - (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , 5 )
+				draw_line_width( DrawDeleteEnd_X - (lineVar*global.windowsSize), DrawDeleteStart_Y + (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) , 
+								 DrawDeleteStart_X + (lineVar*global.windowsSize), DrawDeleteEnd_Y - (lineVar*global.windowsSize) + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), 5 )
+			}else{
+				draw_set_color(c_white)
+				draw_set_halign(fa_middle)
+				draw_text(DrawLoadStart_X + DrawLoadBoxWidth/2 , DrawLoadStart_Y+ (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight/2, "[  " + EmptyTxT[global.gameLanguage,0] + "  ]")
+				draw_set_halign(fa_left)
+				draw_set_valign(fa_top)
+			}
+			
+		}
+		#endregion
+
+		#region //問玩家是否要刪除
+		
+		//底色
+		draw_set_color(c_gray)
+		draw_rectangle(DeleteBackgroundX1 , DeleteBackgroundY1 , DeleteBackgroundX2 ,DeleteBackgroundY2 ,0)
+		
+		//滑鼠判定
+		draw_set_color($3F3F3F)
+		//是 yes
+		if( (MX >= YesBoxX1 && MX <= YesBoxX2) && 
+			(MY >= YesBoxY1 && MY <= YesBoxY2 ) ){
+			draw_rectangle(DrawYesBoxX1 , DrawYesBoxY1  ,DrawYesBoxX2  , DrawYesBoxY2 ,0)
+		}
+		
+		//否 no
+		if( (MX >= NoBoxX1 && MX <= NoBoxX2) && 
+			(MY >= NoBoxY1 && MY <= NoBoxY2 ) ){
+			draw_rectangle(DrawNoBoxX1 , DrawNoBoxY1  ,DrawNoBoxX2  , DrawNoBoxY2 ,0)
+		}
+		draw_set_color(c_white)
+		
+		//文字
+		draw_set_color(c_white)
+		draw_set_halign(fa_center)
+		draw_set_valign(fa_center)
+		draw_text(DrawDeleteAlarm_X ,DrawDeleteAlarm_Y, DeleteAlarm[global.gameLanguage , 0])
+		draw_text(DrawNoText_X , DrawCheckText_Y , YesOrNo[global.gameLanguage,0])
+		draw_text(DrawYesText_X , DrawCheckText_Y , YesOrNo[global.gameLanguage,1])
+		draw_set_halign(fa_left)
+		draw_set_valign(fa_top)
+		
 		#endregion
 		break
 }

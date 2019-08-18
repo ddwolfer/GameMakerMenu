@@ -119,6 +119,14 @@
             }
         },
         {
+            "Key": "44e687ec-150a-487e-ad55-a05b6b6e6ddd",
+            "Value": {
+                "id": "c80d76f6-b739-45b8-bb10-bcb8f434c3bc",
+                "resourcePath": "scripts\\draw_rectengle_width\\draw_rectengle_width.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "46dba027-4871-488c-a722-17dc8b4cdc45",
             "Value": {
                 "id": "7562ab75-8896-4c62-ab41-c6d3d3d29c36",
@@ -415,7 +423,8 @@
         "335b4d22-d7f6-411c-957b-461075a5852e",
         "b8ba44b0-4aab-4a1f-a8d7-8dc5db8580b4",
         "cdc42325-9b6a-4129-90e8-42982915042b",
-        "b5883f5c-4292-4616-a7ec-cda2978ff9d5"
+        "b5883f5c-4292-4616-a7ec-cda2978ff9d5",
+        "44e687ec-150a-487e-ad55-a05b6b6e6ddd"
     ],
     "tutorial": ""
 }

@@ -6,9 +6,6 @@ getInput()
 var MX = mouse_x
 var MY = mouse_y
 
-
-
-
 switch(IGMenuScreen){
 	
 	case IGMenuScreen.main:
