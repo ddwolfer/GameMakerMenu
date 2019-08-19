@@ -7,6 +7,7 @@ var MY = mouse_y
 
 if( getsaveTime > 2 ){
 	getsaveTime = 0
+	oLoading.image_alpha = 0
 	menuScreen = menuScreen.main
 }
 
