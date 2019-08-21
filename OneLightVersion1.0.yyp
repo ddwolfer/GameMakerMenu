@@ -423,6 +423,14 @@
             }
         },
         {
+            "Key": "ef440c0b-b246-477d-b91c-b9ebb33e6cd7",
+            "Value": {
+                "id": "62fcfef9-ee06-4a12-b86e-a930d1e8e82a",
+                "resourcePath": "objects\\oPlayerSpawner\\oPlayerSpawner.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "f4b2ac19-2834-466f-a1e0-349df744a78a",
             "Value": {
                 "id": "c133dd09-0046-41a1-a5b6-06c8367d63cb",

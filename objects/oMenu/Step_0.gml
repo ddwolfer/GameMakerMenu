@@ -33,7 +33,7 @@ switch(menuScreen){
 						oInGameTime.Mins = 0
 						oInGameTime.Sec = 0
 						with(oGame){
-							targetRoom = rStart
+							targetRoom = r1_0
 							doTransition = true
 						}
 					}
