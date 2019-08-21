@@ -7,7 +7,7 @@ if(file_exists(saveFileName)){
 	oInGameTime.Hours = 0
 	oInGameTime.Mins = 0
 	oInGameTime.Sec = 0
-	oGame.targetRoom = rStart
+	oGame.targetRoom = r1_0
 	//遊戲時間小時
 	if( map[?"gameTimeHours"] != undefined ){
 		oInGameTime.Hours = map[?"gameTimeHours"]
@@ -22,7 +22,9 @@ if(file_exists(saveFileName)){
 	}
 	//房間位置
 	if( map[?"room"] != undefined ){
-		oGame.targetRoom = asset_get_index(map[?"room"])
+		if( asset_get_index(map[?"room"]) ){
+			oGame.targetRoom = asset_get_index(map[?"room"])
+		}
 	}else{
 		show_debug_message("error")
 	}
