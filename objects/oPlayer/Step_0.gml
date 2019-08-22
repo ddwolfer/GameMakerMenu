@@ -12,7 +12,6 @@ if(control){
 
 	x += xSpeed;
 
-
 	y += ySpeed;
 
 	if(xSpeed > 0){
