@@ -2,21 +2,26 @@
 // You can write your code in this editor
 getInput();
 
-if(control){
-	xx = right - left;
-	yy = down - up;
+xx = right - left;
+yy = down - up;
 
-	var xSpeed = xx * accell;
-	var ySpeed = yy * accell;
+var xSpeed = xx * accell;
+var ySpeed = yy * accell;
 
 
-	x += xSpeed;
+x += xSpeed;
 
-	y += ySpeed;
+y += ySpeed;
 
-	if(xSpeed > 0){
-		image_xscale = 1;
-	}else if(xSpeed < 0){
-		image_xscale = -1;
-	}
+if(xSpeed > 0){
+	image_xscale = 1;
+}else if(xSpeed < 0){
+	image_xscale = -1;
 }
+
+if(xSpeed!=0){
+	PlayerState = PlayerState.run
+}else{
+	PlayerState = PlayerState.idle
+}
+

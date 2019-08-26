@@ -3,15 +3,16 @@
 /// @description 
 xSpeed = 0;
 ySpeed = 0
-accell = 2
+accell = 3
 
-//haveKey = false;
-keyCount = 0;
-
-death = false;
-damaged = false;
 
 control = true;
 depth = 10;
 
-textboxFlag = 0
+enum PlayerState{
+	idle = 0,
+	run = 1,
+	attack = 2,
+	playDeath = 3
+}
+PlayerState = PlayerState.idle

@@ -103,6 +103,14 @@
             }
         },
         {
+            "Key": "2e30c859-f214-4552-9d9a-83b929ae961d",
+            "Value": {
+                "id": "68dc5a62-8091-470a-84a0-420e5dc1658b",
+                "resourcePath": "sprites\\sprite11\\sprite11.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "3340ea9a-4953-44be-95e9-393f6c699bf2",
             "Value": {
                 "id": "b298f137-021c-42aa-ad51-96cbd4373c98",
@@ -124,6 +132,14 @@
                 "id": "bad7cf6f-2b5e-43dd-a055-1eab44f034e8",
                 "resourcePath": "tilesets\\tileset0\\tileset0.yy",
                 "resourceType": "GMTileSet"
+            }
+        },
+        {
+            "Key": "37b92f63-5d8c-4fe6-b6b4-ec7a3226e1bb",
+            "Value": {
+                "id": "9b7e3798-11fc-4140-aefa-fd10c76dc1f6",
+                "resourcePath": "sprites\\sPlayerRun\\sPlayerRun.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -186,7 +202,7 @@
             "Key": "613c9fe9-2f04-4391-afa3-780f7c3a537a",
             "Value": {
                 "id": "e9de3b1c-48db-46cf-99ed-eb41742ec89d",
-                "resourcePath": "sprites\\sPlayer\\sPlayer.yy",
+                "resourcePath": "sprites\\sPlayerIdle\\sPlayerIdle.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -236,6 +252,14 @@
                 "id": "653d6a41-62fa-4ba8-84fc-e70bd369a8a1",
                 "resourcePath": "objects\\oLoadData\\oLoadData.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "8020e341-338b-433b-b09d-4b8df586237c",
+            "Value": {
+                "id": "351fc30c-a16c-4490-9d2d-0ff94e7f6b49",
+                "resourcePath": "sprites\\sprite10\\sprite10.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -380,6 +404,14 @@
                 "id": "a608da2e-e216-4b5a-830c-f86bcdd74c76",
                 "resourcePath": "scripts\\saveGameFile\\saveGameFile.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "cebf0173-916c-4985-8302-6c3abf5171a5",
+            "Value": {
+                "id": "1c13fe93-4eba-44fa-bcc8-e8a5c307c58a",
+                "resourcePath": "views\\cebf0173-916c-4985-8302-6c3abf5171a5.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
