@@ -103,14 +103,6 @@
             }
         },
         {
-            "Key": "2e30c859-f214-4552-9d9a-83b929ae961d",
-            "Value": {
-                "id": "68dc5a62-8091-470a-84a0-420e5dc1658b",
-                "resourcePath": "sprites\\sprite11\\sprite11.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "3340ea9a-4953-44be-95e9-393f6c699bf2",
             "Value": {
                 "id": "b298f137-021c-42aa-ad51-96cbd4373c98",
@@ -258,7 +250,7 @@
             "Key": "8020e341-338b-433b-b09d-4b8df586237c",
             "Value": {
                 "id": "351fc30c-a16c-4490-9d2d-0ff94e7f6b49",
-                "resourcePath": "sprites\\sprite10\\sprite10.yy",
+                "resourcePath": "sprites\\sPlayerAttackRight\\sPlayerAttackRight.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -351,6 +343,22 @@
             }
         },
         {
+            "Key": "ab9b0214-4933-4837-b99d-ff10cf2f6f23",
+            "Value": {
+                "id": "f067da2e-5a67-4c7c-9c31-6b34fb625a90",
+                "resourcePath": "sprites\\sPlayerAttackUp\\sPlayerAttackUp.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "ac74306d-4d1b-4faa-8754-cbad940fbb98",
+            "Value": {
+                "id": "9a599b95-5136-410d-8185-dc0aa1f3051b",
+                "resourcePath": "sprites\\sPlayerAttackDown\\sPlayerAttackDown.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "b5883f5c-4292-4616-a7ec-cda2978ff9d5",
             "Value": {
                 "id": "81a819a4-f354-4d5f-8933-63844458aa0c",
@@ -380,14 +388,6 @@
                 "id": "e3ba4a53-447a-474d-875e-23b3ef3927cb",
                 "resourcePath": "objects\\oMenuInGame\\oMenuInGame.yy",
                 "resourceType": "GMObject"
-            }
-        },
-        {
-            "Key": "c1ab8dd4-6eb8-453b-8fc7-6d28e90e2365",
-            "Value": {
-                "id": "c9055e7d-fe2a-4722-a61d-9452cfbfd693",
-                "resourcePath": "sprites\\sPlayer1\\sPlayer1.yy",
-                "resourceType": "GMSprite"
             }
         },
         {

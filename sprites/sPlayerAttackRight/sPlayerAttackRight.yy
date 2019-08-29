@@ -2,14 +2,14 @@
     "id": "8020e341-338b-433b-b09d-4b8df586237c",
     "modelName": "GMSprite",
     "mvc": "1.12",
-    "name": "sprite10",
+    "name": "sPlayerAttackRight",
     "For3D": false,
     "HTile": false,
     "VTile": false,
     "bbox_bottom": 40,
     "bbox_left": 0,
     "bbox_right": 47,
-    "bbox_top": 0,
+    "bbox_top": 5,
     "bboxmode": 0,
     "colkind": 1,
     "coltolerance": 0,
@@ -82,28 +82,6 @@
             ]
         },
         {
-            "id": "f139422e-4f41-4707-896a-af4f7985ffb7",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "8020e341-338b-433b-b09d-4b8df586237c",
-            "compositeImage": {
-                "id": "971333de-ac9a-4f9e-8edf-f134fd075963",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "f139422e-4f41-4707-896a-af4f7985ffb7",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "e88815fe-2ad5-4f85-b957-1a1eda55e487",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "f139422e-4f41-4707-896a-af4f7985ffb7",
-                    "LayerId": "de995640-b94d-4925-b102-418936ff519f"
-                }
-            ]
-        },
-        {
             "id": "6d251447-095c-42a5-886e-0882759058f3",
             "modelName": "GMSpriteFrame",
             "mvc": "1.0",
@@ -126,23 +104,23 @@
             ]
         },
         {
-            "id": "e0a69b75-00cc-4761-8cec-68e002fedd39",
+            "id": "f139422e-4f41-4707-896a-af4f7985ffb7",
             "modelName": "GMSpriteFrame",
             "mvc": "1.0",
             "SpriteId": "8020e341-338b-433b-b09d-4b8df586237c",
             "compositeImage": {
-                "id": "34fe16e2-72e5-46bf-a294-5debced6b15b",
+                "id": "971333de-ac9a-4f9e-8edf-f134fd075963",
                 "modelName": "GMSpriteImage",
                 "mvc": "1.0",
-                "FrameId": "e0a69b75-00cc-4761-8cec-68e002fedd39",
+                "FrameId": "f139422e-4f41-4707-896a-af4f7985ffb7",
                 "LayerId": "00000000-0000-0000-0000-000000000000"
             },
             "images": [
                 {
-                    "id": "d0ea74b4-6d3e-4877-8e5b-8de9f8a2e517",
+                    "id": "e88815fe-2ad5-4f85-b957-1a1eda55e487",
                     "modelName": "GMSpriteImage",
                     "mvc": "1.0",
-                    "FrameId": "e0a69b75-00cc-4761-8cec-68e002fedd39",
+                    "FrameId": "f139422e-4f41-4707-896a-af4f7985ffb7",
                     "LayerId": "de995640-b94d-4925-b102-418936ff519f"
                 }
             ]
@@ -275,28 +253,6 @@
                     "modelName": "GMSpriteImage",
                     "mvc": "1.0",
                     "FrameId": "41fd663d-193b-4120-91b1-6398db9d573f",
-                    "LayerId": "de995640-b94d-4925-b102-418936ff519f"
-                }
-            ]
-        },
-        {
-            "id": "3a97ce67-849d-47d9-b177-7ac0faf778ab",
-            "modelName": "GMSpriteFrame",
-            "mvc": "1.0",
-            "SpriteId": "8020e341-338b-433b-b09d-4b8df586237c",
-            "compositeImage": {
-                "id": "79248030-482a-43fa-884f-a98aa5707194",
-                "modelName": "GMSpriteImage",
-                "mvc": "1.0",
-                "FrameId": "3a97ce67-849d-47d9-b177-7ac0faf778ab",
-                "LayerId": "00000000-0000-0000-0000-000000000000"
-            },
-            "images": [
-                {
-                    "id": "e70509bd-32d7-45dd-b042-861dc6c54003",
-                    "modelName": "GMSpriteImage",
-                    "mvc": "1.0",
-                    "FrameId": "3a97ce67-849d-47d9-b177-7ac0faf778ab",
                     "LayerId": "de995640-b94d-4925-b102-418936ff519f"
                 }
             ]
@@ -452,7 +408,7 @@
     ],
     "origin": 9,
     "originLocked": false,
-    "playbackSpeed": 5,
+    "playbackSpeed": 10,
     "playbackSpeedType": 0,
     "premultiplyAlpha": false,
     "sepmasks": false,
