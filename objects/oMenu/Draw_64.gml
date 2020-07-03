@@ -12,6 +12,8 @@ switch(menuScreen){
 			//文字位置 比框靠近中心一點
 			var textX = DrawMainTextStart_X *1.3
 			var textY = (line*DrawTextBoxHeight) + DrawTextBoxHeight/2 + DrawMainTextStart_Y
+			//show_debug_message("[[TEXT X = "+string(textX))
+			//show_debug_message("[[TEXT Y = "+string(textY))
 			//畫實心框 前兩行判斷為滑鼠 第三行判斷為案鍵
 			if( ( MX>= MainTextStart_X							&&	MX<= MainTextStart_X + TextBoxWidth )			&&
 			    ( MY>= MainTextStart_Y + (line*TextBoxHeight)	&&	MY<= MainTextStart_Y + ((line+1)*TextBoxHeight))||
@@ -30,6 +32,7 @@ switch(menuScreen){
 			draw_set_color(c_white) //顏色設定
 			draw_set_font(MenuFont) //字體設定(包含大小)
 			draw_set_valign(fa_middle) //文字垂直置中
+			draw_set_halign( fa_left )
 			draw_text(textX, textY, mainMenuText[global.gameLanguage,line])
 		}
 		#endregion
@@ -116,10 +119,7 @@ switch(menuScreen){
 			if( ( MX >= LoadStart_X											&& MX <= LoadStart_X + LoadBoxWidth )	&& 
 				( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
 				draw_set_color(c_white)
-				draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
-				draw_rectangle(DrawLoadStart_X+1, DrawLoadStart_Y+1 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-1,DrawLoadStart_Y-1 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
-				draw_rectangle(DrawLoadStart_X+2, DrawLoadStart_Y+2 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-2,DrawLoadStart_Y-2 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
-				draw_rectangle(DrawLoadStart_X+3, DrawLoadStart_Y+3 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth-3,DrawLoadStart_Y-3 + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,1)
+				draw_rectengle_width(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,4,c_white)
 			}
 			//標題方框
 			draw_set_color($384373)
@@ -192,18 +192,18 @@ switch(menuScreen){
 						draw_set_color(c_white)
 					}else{
 						switch(global.gameResolution){
-						case 1:
-							draw_text( Text_X , Text_Y , resolution[0])
-							break
-						case 2:
-							draw_text( Text_X , Text_Y , resolution[1])
-							break
-						case 2.25:
-							draw_text( Text_X , Text_Y , resolution[2])
-							break
-						case 3:
-							draw_text( Text_X , Text_Y , resolution[3])
-							break
+							case 1:
+								draw_text( Text_X , Text_Y , resolution[0])
+								break
+							case 2:
+								draw_text( Text_X , Text_Y , resolution[1])
+								break
+							case 2.25:
+								draw_text( Text_X , Text_Y , resolution[2])
+								break
+							case 3:
+								draw_text( Text_X , Text_Y , resolution[3])
+								break
 						}
 					}
 					draw_set_halign(fa_left)

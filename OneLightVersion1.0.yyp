@@ -79,6 +79,14 @@
             }
         },
         {
+            "Key": "1714c6ff-9ef3-4a47-9143-97fd98de0264",
+            "Value": {
+                "id": "c8e34b3a-e01f-4d50-9d18-d47792f4b83c",
+                "resourcePath": "views\\1714c6ff-9ef3-4a47-9143-97fd98de0264.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "1952be2b-2c8c-425e-9f61-2f2d362d0002",
             "Value": {
                 "id": "232a8fc1-c086-4703-978b-dfb2d957838c",
@@ -295,6 +303,22 @@
             }
         },
         {
+            "Key": "93dce9c9-2e0e-4e6d-b8d5-2cc2eabfbc4e",
+            "Value": {
+                "id": "a689aa70-8564-43a5-b38f-687790b12342",
+                "resourcePath": "rooms\\rFirstSetting\\rFirstSetting.yy",
+                "resourceType": "GMRoom"
+            }
+        },
+        {
+            "Key": "9c3bbc5c-7549-450b-8de1-2ed659e78ae7",
+            "Value": {
+                "id": "22acc928-744a-4fb5-875e-7f0f57892e43",
+                "resourcePath": "objects\\oFirstLanguage\\oFirstLanguage.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "9d79d1b7-0f3f-4673-990e-bffcf30b0ac6",
             "Value": {
                 "id": "cadbf7fc-2ff0-41d2-968f-cbafef0b6d8a",
@@ -332,6 +356,14 @@
                 "id": "a97eff43-9af7-445b-86a6-8809ed1a9e3b",
                 "resourcePath": "views\\a7f92067-9ea1-4762-be27-9b07e9922c03.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "a9188620-a624-4a5a-83ae-a1b53faf038b",
+            "Value": {
+                "id": "1ab4c1a4-2036-4ca1-8cba-e511a59662ce",
+                "resourcePath": "options\\linux\\options_linux.yy",
+                "resourceType": "GMLinuxOptions"
             }
         },
         {
@@ -468,6 +500,14 @@
                 "id": "62fcfef9-ee06-4a12-b86e-a930d1e8e82a",
                 "resourcePath": "objects\\oPlayerSpawner\\oPlayerSpawner.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "f418569b-3bdd-4706-a0e4-364317f54032",
+            "Value": {
+                "id": "5eefb06f-bf47-466d-a8f7-a7bf0be63b71",
+                "resourcePath": "options\\mac\\options_mac.yy",
+                "resourceType": "GMMacOptions"
             }
         },
         {

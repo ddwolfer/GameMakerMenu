@@ -115,7 +115,7 @@ switch(menuScreen){
 					deleteFromLoad = 1
 					deletefile = line+1
 					menuScreen = menuScreen.deleteGame
-				}	
+				}
 			}
 		}
 		#endregion

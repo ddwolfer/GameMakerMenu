@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+var FirstFlag = 0
+
 #region 讀檔
 if(file_exists("saveSystem.sav")){ //如果存檔存在
 	var wrapper = LoadJsonFromFile("saveSystem.sav")
@@ -44,13 +46,18 @@ if(file_exists("saveSystem.sav")){ //如果存檔存在
 	global.gameLanguage = 0
 	global.gameMusic = 100
 	global.gameSFX = 100
-	global.gameResolution = window_get_width()/640 
-	global.gameFullScreen = 0
+	global.gameResolution = window_get_width()/640
+	global.gameFullScreen = 1
+	window_set_fullscreen(1)
+	show_debug_message("+++++++NO SAVE DATA+++++++")
+	FirstFlag = 1
 }
 #endregion
 global.windowsSize = window_get_width()/640 //視窗大小 最小為640*360 以此為底算倍數
 
-if(room == rLoadData){
+if(FirstFlag == 1){
+	room_goto(rFirstSetting)
+}else if(room == rLoadData){
 	room_goto_next()
 }
 
