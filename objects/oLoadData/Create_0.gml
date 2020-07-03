@@ -27,7 +27,8 @@ if(file_exists("saveSystem.sav")){ //如果存檔存在
 		global.gameResolution = map[?"Resolution"]
 		window_set_size(640 * global.gameResolution, 360 * global.gameResolution)
 	}else{
-		global.gameResolution = window_get_width()/640 //視窗大小 最小為640*360 以此為底算倍數
+		//global.gameResolution = window_get_width()/640 //視窗大小 最小為640*360 以此為底算倍數
+		global.gameResolution = 3
 	}
 	if( map[?"FullScreen"] != undefined ){
 		if( map[?"FullScreen"] == 1){
@@ -46,14 +47,14 @@ if(file_exists("saveSystem.sav")){ //如果存檔存在
 	global.gameLanguage = 0
 	global.gameMusic = 100
 	global.gameSFX = 100
-	global.gameResolution = window_get_width()/640
+	global.gameResolution = 3
 	global.gameFullScreen = 1
 	window_set_fullscreen(1)
 	show_debug_message("+++++++NO SAVE DATA+++++++")
 	FirstFlag = 1
 }
 #endregion
-global.windowsSize = window_get_width()/640 //視窗大小 最小為640*360 以此為底算倍數
+global.windowsSize = 3 //視窗大小 最小為640*360 以此為底算倍數
 
 if(FirstFlag == 1){
 	room_goto(rFirstSetting)

@@ -25,6 +25,7 @@
 	mouseLeft = 0
 	mouseLeftClick = 0
 }*/
+	
 	up = keyboard_check(ord("W")); 
 	down = keyboard_check(ord("S"));
 	left = keyboard_check(ord("A"));
@@ -37,4 +38,5 @@
 	rightMenu = keyboard_check_pressed(vk_right);
 	mouseLeft = mouse_check_button(mb_left);
 	mouseLeftClick = mouse_check_button_pressed(mb_left)
+	PressKeyboard = up || down || left || right || start || select || upMenu || downMenu || leftMenu || rightMenu
 

@@ -2,8 +2,13 @@
 // You can write your code in this editor
 getInput()
 //抓滑鼠位置 window_mouse_get()會抓Viewport絕對位置 mouse_x會抓RoomXY絕對位置
-var MX = mouse_x
-var MY = mouse_y
+if(oGame.FreezeMouse){
+	var MX = 0
+	var MY = 0
+}else{
+	var MX = mouse_x
+	var MY = mouse_y
+}
 
 if(select && room != rTitle){
 	if( IGMenuScreen == IGMenuScreen.off ){ //off -> main
@@ -25,6 +30,30 @@ if(select && room != rTitle){
 switch(IGMenuScreen){
 	case IGMenuScreen.main:
 		#region //main
+		if( upMenu && InGameMenuCursor>0 ){
+			InGameMenuCursor -= 1
+		}
+		if( downMenu && InGameMenuCursor<3 ){
+			InGameMenuCursor += 1
+		}
+		if( start ){
+			switch(InGameMenuCursor){
+				case 0: //返回遊戲
+					IGMenuScreen = IGMenuScreen.off
+				break
+				case 1: //選項
+					IGMenuScreen = IGMenuScreen.option
+				break
+				case 2: //儲存&結束
+					saveGameFile(global.playingSave)
+					IGMenuScreen = IGMenuScreen.off
+					with(oGame){
+						targetRoom = rTitle
+						doTransition = true
+					}
+				break
+			}
+		}
 		if(mouseLeftClick){
 			show_debug_message("click")
 			for( var line = 0 ; line < array_length_1d(IGMainMenuText) ; line++){
@@ -53,119 +82,130 @@ switch(IGMenuScreen){
 			}
 		}
 		#endregion
-	break
+		break
 		
 	case IGMenuScreen.option:
-		#region //option
+		#region
+		//鍵盤返回
+		if( select ){
+			saveOptionSystem()
+			menuScreen = menuScreen.main
+		}
+		if( upMenu && optionCursor>0 ){
+			optionCursor -= 1
+		}
+		if( downMenu && optionCursor<4 ){
+			optionCursor += 1
+		}
+		
 		if ( mouseLeftClick ){
 			for(var line = 0 ; line < array_length_1d(optionMenuText) ; line++ ){
 				switch(line){
 					case 0://解析度
 					#region
-					if( (MX>= optionContentStart_X && MX <= optionContentStart_X + optionArrow_W) &&
-						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-							switch(global.gameResolution){
+						if( (MX>= optionContentStart_X && MX <= optionContentStart_X + optionArrow_W) &&
+							(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
+								switch(global.gameResolution){
+									case 1:
+										window_set_size(1920,1080)
+										global.gameResolution = 3
+										break
+									case 2:
+										window_set_size(640,360)
+										global.gameResolution = 1
+										break
+									case 2.25:
+										window_set_size(1280,720)
+										global.gameResolution = 2
+										break
+									case 3:
+										window_set_size(1440,810)
+										global.gameResolution = 2.25
+										break
+								}
+						}
+						if( (MX>= optionContentEND_X && MX <= optionContentEND_X + optionArrow_W) &&
+							(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
+								switch(global.gameResolution){
 								case 1:
-									window_set_size(1920,1080)
-									global.gameResolution = 3
-									break
-								case 2:
-									window_set_size(640,360)
-									global.gameResolution = 1
-									break
-								case 2.25:
 									window_set_size(1280,720)
 									global.gameResolution = 2
 									break
-								case 3:
+								case 2:
 									window_set_size(1440,810)
 									global.gameResolution = 2.25
 									break
+								case 2.25:
+									window_set_size(1920,1080)
+									global.gameResolution = 3
+									break
+								case 3:
+									window_set_size(640,360)
+									global.gameResolution = 1
+									break
 							}
-					}
-					if( (MX>= optionContentEND_X && MX <= optionContentEND_X + optionArrow_W) &&
-						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-							switch(global.gameResolution){
-							case 1:
-								window_set_size(1280,720)
-								global.gameResolution = 2
-								break
-							case 2:
-								window_set_size(1440,810)
-								global.gameResolution = 2.25
-								break
-							case 2.25:
-								window_set_size(1920,1080)
-								global.gameResolution = 3
-								break
-							case 3:
-								window_set_size(640,360)
-								global.gameResolution = 1
-								break
 						}
-					}
-					#endregion
-					break
+						#endregion
+						break
 					case 1://全螢幕
-					if( (MX>= FSx1 && MX <= FSx2) &&
-						(MY>= FSy1 && MY <= FSy2) ){
-						if(window_get_fullscreen()){
-							window_set_fullscreen(0)
-							global.gameFullScreen = 0
-						}else{
-							window_set_fullscreen(1)
-							global.gameFullScreen = 1
+						if( (MX>= FSx1 && MX <= FSx2) &&
+							(MY>= FSy1 && MY <= FSy2)){
+							if(window_get_fullscreen()){
+								window_set_fullscreen(0)
+								global.gameFullScreen = 0
+							}else{
+								window_set_fullscreen(1)
+								global.gameFullScreen = 1
+							}
 						}
-					}
-					break
+
+						break
 					case 2://語言
-					#region
-					if( (MX>= optionContentStart_X && MX <= optionContentStart_X + optionArrow_W) &&
-						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-						if(global.gameLanguage == 0){
-							global.gameLanguage = array_length_1d(LanguageOption) - 1
-						}else{
-							global.gameLanguage -= 1
-						}
-						setAllFont()
+						#region
+						if( (MX>= optionContentStart_X && MX <= optionContentStart_X + optionArrow_W) &&
+							(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
+							if(global.gameLanguage == 0){
+								global.gameLanguage = array_length_1d(LanguageOption) - 1
+							}else{
+								global.gameLanguage -= 1
+							}
+							setAllFont()
 					
-					}
-					if( (MX>= optionContentEND_X && MX <= optionContentEND_X + optionArrow_W) &&
-						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-						if(global.gameLanguage == array_length_1d(LanguageOption) - 1){
-							global.gameLanguage = 0
-						}else{
-							global.gameLanguage += 1
-						}	
-						setAllFont()
-					}
-					#endregion
-					break
-					case 3://音樂
-					#region
-					if( (MX>= optionContentStart_X && MX <= optionContentStart_X + optionArrow_W) &&
-						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-						if(global.gameMusic > 0 ){
-							global.gameMusic -= 10
-						}					
-					}
-					if( (MX>= optionContentEND_X && MX <= optionContentEND_X + optionArrow_W) &&
-						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
-						if(global.gameMusic < 100){
-							global.gameMusic += 10
 						}
-					}
-					#endregion
-					break
+						if( (MX>= optionContentEND_X && MX <= optionContentEND_X + optionArrow_W) &&
+							(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
+							if(global.gameLanguage == array_length_1d(LanguageOption) - 1){
+								global.gameLanguage = 0
+							}else{
+								global.gameLanguage += 1
+							}	
+							setAllFont()
+						}
+						#endregion
+						break
+						case 3://音樂
+						#region
+						if( (MX>= optionContentStart_X && MX <= optionContentStart_X + optionArrow_W) &&
+							(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
+							if(global.gameMusic > 0 ){
+								global.gameMusic -= 10
+							}					
+						}
+						if( (MX>= optionContentEND_X && MX <= optionContentEND_X + optionArrow_W) &&
+							(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
+							if(global.gameMusic < 100){
+								global.gameMusic += 10
+							}
+						}
+						#endregion
+						break
 					case 4://音效
 					#region
 					if( (MX>= optionContentStart_X && MX <= optionContentStart_X + optionArrow_W) &&
 						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
 						if(global.gameSFX > 0){
 							global.gameSFX -= 10
-						}
-							
-					
+						}					
 					}
 					if( (MX>= optionContentEND_X && MX <= optionContentEND_X + optionArrow_W) &&
 						(MY>= optionContentStart_Y*0.85 + optionContentBoxHeight*line && MY <= (optionContentStart_Y*0.85 + optionContentBoxHeight*line) +  optionArrow_H) ){
@@ -178,7 +218,119 @@ switch(IGMenuScreen){
 				}	
 			}
 		}
+		if(start && oGame.FreezeMouse){
+			if(optionCursor == 1){
+				if(window_get_fullscreen()){
+					window_set_fullscreen(0)
+					global.gameFullScreen = 0
+				}else{
+					window_set_fullscreen(1)
+					global.gameFullScreen = 1
+				}
+			}
+		}
+		if(leftMenu && oGame.FreezeMouse){
+			switch(optionCursor){
+				case 0: //解析度
+					#region
+					switch(global.gameResolution){
+						case 1:
+							window_set_size(1920,1080)
+							global.gameResolution = 3
+							break
+						case 2:
+							window_set_size(640,360)
+							global.gameResolution = 1
+							break
+						case 2.25:
+							window_set_size(1280,720)
+							global.gameResolution = 2
+							break
+						case 3:
+							window_set_size(1440,810)
+							global.gameResolution = 2.25
+							break
+					}
+					#endregion
+					break
+				case 2: //語言
+					#region
+					if(global.gameLanguage == 0){
+						global.gameLanguage = array_length_1d(LanguageOption) - 1
+					}else{
+						global.gameLanguage -= 1
+					}
+					setAllFont()
+					#endregion
+					break
+				case 3: //音樂
+					#region
+					if(global.gameMusic > 0 ){
+						global.gameMusic -= 10
+					}		
+					#endregion
+					break
+				case 4: //音效
+					#region
+					if(global.gameSFX > 0){
+						global.gameSFX -= 10
+					}
+					#endregion
+					break
+			}
+		}
+		if(rightMenu){
+			switch(optionCursor){
+				case 0: //解析度
+					#region
+					switch(global.gameResolution){
+						case 1:
+							window_set_size(1280,720)
+							global.gameResolution = 2
+							break
+						case 2:
+							window_set_size(1440,810)
+							global.gameResolution = 2.25
+							break
+						case 2.25:
+							window_set_size(1920,1080)
+							global.gameResolution = 3
+							break
+						case 3:
+							window_set_size(640,360)
+							global.gameResolution = 1
+							break
+					}
+					#endregion
+					break
+				case 2: //語言
+					#region
+					if(global.gameLanguage == array_length_1d(LanguageOption) - 1){
+						global.gameLanguage = 0
+					}else{
+						global.gameLanguage += 1
+						}	
+					setAllFont()
+					#endregion
+					break
+				case 3: //音樂
+					#region
+					if(global.gameMusic < 100){
+						global.gameMusic += 10
+					}
+					#endregion
+					break
+				case 4: //音效
+					#region
+					if(global.gameSFX < 100){
+						global.gameSFX += 10
+					}
+					#endregion
+					break
+			}
+		}
 		#endregion
-	break
+		break
+
 }
 

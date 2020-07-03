@@ -3,8 +3,13 @@
 
 getInput()
 //抓滑鼠位置 window_mouse_get()會抓Viewport絕對位置 mouse_x會抓RoomXY絕對位置
-var MX = mouse_x
-var MY = mouse_y
+if(oGame.FreezeMouse){
+	var MX = 0
+	var MY = 0
+}else{
+	var MX = mouse_x
+	var MY = mouse_y
+}
 
 switch(IGMenuScreen){
 	
@@ -22,8 +27,7 @@ switch(IGMenuScreen){
 		
 		draw_set_color(c_white)
 		//draw_rectangle(DrawIGmainTextStart_X,DrawIGmainTextStart_Y + ( line * DrawIGmainText_H),DrawIGmainTextSEnd_X,DrawIGmainTextStart_Y + ( (line+1) * DrawIGmainText_H),1)
-		if( (MX >= IGmainTextStart_X							&& MX <= IGmainTextSEnd_X) &&
-			(MY >= IGmainTextStart_Y + ( line * IGmainText_H)	&& MY <= IGmainTextStart_Y + ( (line+1) * IGmainText_H)) ){
+		if( line == InGameMenuCursor ){
 			drawGradualColor( (DrawIGmainTextStart_X + DrawIGmainTextSEnd_X)/2 , DrawIGmainTextStart_Y + ( line * DrawIGmainText_H) , DrawIGmainTextSEnd_X , DrawIGmainTextStart_Y + ( (line+1) * DrawIGmainText_H) , $ACB069)
 			drawGradualColor( (DrawIGmainTextStart_X + DrawIGmainTextSEnd_X)/2 , DrawIGmainTextStart_Y + ( line * DrawIGmainText_H) , DrawIGmainTextStart_X , DrawIGmainTextStart_Y + ( (line+1) * DrawIGmainText_H) , $ACB069)
 		}
@@ -141,6 +145,11 @@ switch(IGMenuScreen){
 					draw_set_valign(fa_top)
 					draw_set_halign(fa_left)
 					break			
+			}
+			if(line == optionCursor){
+				optionLineY = DrawOptionContentStart_Y*1.25 + DrawOptionContentBoxHeight*line
+				draw_set_color(c_white)
+				draw_line_width(optionLineX1,optionLineY,optionLineX2,optionLineY,6)
 			}
 		}
 		#endregion

@@ -2,8 +2,13 @@
 // You can write your code in this editor
 getInput()
 //抓滑鼠位置 window_mouse_get()會抓Viewport絕對位置 mouse_x會抓RoomXY絕對位置
-var MX = window_mouse_get_x()
-var MY = window_mouse_get_y()
+if(oGame.FreezeMouse){
+	var MX = 0
+	var MY = 0
+}else{
+	var MX = mouse_x
+	var MY = mouse_y
+}
 
 //show_debug_message(string(MX)+"X軸")
 //show_debug_message(string(MY)+"Y軸")

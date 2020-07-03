@@ -72,11 +72,16 @@ YesOrNo [1, 1] ="是"
 MainMenuCursor = 0
 deleteFromLoad = 0
 deleteFromNew = 0
+newGameCursor = 0
+loadGameCursor = 0
+deleteGameCursor = 1
+optionCursor = 0
+
 //文字設定
 MenuFontSize = 11 * global.windowsSize
 optionFontSize = 15 * global.windowsSize
 MenuFont = font_add(LanguageFont[global.gameLanguage], MenuFontSize, false, false, 0, 65535)
-ChooseCuesor = font_add("EquipmentPro.ttf", 17 * global.windowsSize, false, false, 0, 65535)
+ChooseCursor = font_add("EquipmentPro.ttf", 17 * global.windowsSize, false, false, 0, 65535)
 optionFont = font_add(LanguageFont[global.gameLanguage], optionFontSize, false, false, 0, 65535)
 
 #region main page 設定
@@ -118,6 +123,11 @@ optionArrow_H = sprite_get_height(sMenuArrowLeft)
 
 DrawOptionArrow_W = optionArrow_W * global.windowsSize
 DrawOptionArrow_H = optionArrow_H * global.windowsSize
+
+// 底線
+optionLineX1 = DrawOptionTextStart_X
+optionLineX2 = DrawOptionContentEND_X + DrawOptionArrow_W
+
 //全螢幕的框框
 DFSx1 = 403 * global.windowsSize
 DFSx2 = 429 * global.windowsSize
@@ -128,6 +138,7 @@ FSx1 = 403
 FSx2 = 429
 FSy1 = 104
 FSy2 = 130 
+
 #endregion
 
 #region Load page 設定

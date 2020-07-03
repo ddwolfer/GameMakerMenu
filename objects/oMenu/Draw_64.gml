@@ -1,8 +1,13 @@
 /// @description 介面文字
 
 //抓滑鼠位置 window_mouse_get()會抓Viewport絕對位置 mouse_x會抓RoomXY絕對位置
-var MX = mouse_x
-var MY = mouse_y
+if(oGame.FreezeMouse){
+	var MX = 0
+	var MY = 0
+}else{
+	var MX = mouse_x
+	var MY = mouse_y
+}
 
 switch(menuScreen){
 	case menuScreen.main:
@@ -22,7 +27,7 @@ switch(menuScreen){
 				drawGradualColor(DrawMainTextStart_X						,(line*DrawTextBoxHeight)+DrawMainTextStart_Y,
 							     DrawMainTextStart_X+DrawTextBoxWidth		,(line*DrawTextBoxHeight)+DrawTextBoxHeight+DrawMainTextStart_Y,$ACB069)//漸層色(in Script)
 				draw_set_color(c_white) //顏色設定
-				draw_set_font(ChooseCuesor) //字體設定(包含大小)
+				draw_set_font(ChooseCursor) //字體設定(包含大小)
 				draw_set_valign(fa_middle) //文字垂直置中
 				draw_text(DrawMainTextStart_X * 0.6, textY, ">")
 				draw_set_valign(fa_top)
@@ -51,12 +56,11 @@ switch(menuScreen){
 			draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,0)
 			draw_set_alpha(1)
 			//判斷滑鼠位置
-			if( ( MX >= LoadStart_X											&& MX <= LoadStart_X + LoadBoxWidth )	&& 
-				( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
-					
+			if( newGameCursor == line ){
 				draw_set_color(c_white)
 				draw_rectengle_width(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,4,c_white)
 			}
+			
 			//標題方框
 			draw_set_color($384373)
 			draw_rectangle(DrawLoadBoxTitle_X, DrawLoadBoxTitle_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadBoxTitle_X + DrawLoadBoxTitle_W,DrawLoadBoxTitle_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxTitle_H,0)
@@ -116,8 +120,7 @@ switch(menuScreen){
 			draw_rectangle(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,0)
 			draw_set_alpha(1)
 			//判斷滑鼠位置
-			if( ( MX >= LoadStart_X											&& MX <= LoadStart_X + LoadBoxWidth )	&& 
-				( MY >= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace))	&& MY <= LoadStart_Y + (line* (LoadBoxHeight+LoadBoxSpace)) + LoadBoxHeight)  ){
+			if( loadGameCursor == line ){
 				draw_set_color(c_white)
 				draw_rectengle_width(DrawLoadStart_X, DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)), DrawLoadStart_X+DrawLoadBoxWidth,DrawLoadStart_Y + (line* (DrawLoadBoxHeight+DrawLoadBoxSpace)) + DrawLoadBoxHeight,4,c_white)
 			}
@@ -251,7 +254,13 @@ switch(menuScreen){
 					draw_set_halign(fa_left)
 					break			
 			}
+			if(line == optionCursor && oGame.FreezeMouse){
+				optionLineY = DrawOptionContentStart_Y*1.25 + DrawOptionContentBoxHeight*line
+				draw_set_color(c_white)
+				draw_line_width(optionLineX1,optionLineY,optionLineX2,optionLineY,6)
+			}
 		}
+		
 		#endregion
 		break
 		
@@ -331,12 +340,21 @@ switch(menuScreen){
 		//是 yes
 		if( (MX >= YesBoxX1 && MX <= YesBoxX2) && 
 			(MY >= YesBoxY1 && MY <= YesBoxY2 ) ){
-			draw_rectangle(DrawYesBoxX1 , DrawYesBoxY1  ,DrawYesBoxX2  , DrawYesBoxY2 ,0)
+			deleteGameCursor = 1
 		}
 		
 		//否 no
 		if( (MX >= NoBoxX1 && MX <= NoBoxX2) && 
 			(MY >= NoBoxY1 && MY <= NoBoxY2 ) ){
+			deleteGameCursor = 0
+		}
+		//是 yes
+		if( deleteGameCursor == 1 ){
+			draw_rectangle(DrawYesBoxX1 , DrawYesBoxY1  ,DrawYesBoxX2  , DrawYesBoxY2 ,0)
+		}
+		
+		//否 no
+		if( deleteGameCursor == 0 ){
 			draw_rectangle(DrawNoBoxX1 , DrawNoBoxY1  ,DrawNoBoxX2  , DrawNoBoxY2 ,0)
 		}
 		draw_set_color(c_white)

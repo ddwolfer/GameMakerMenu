@@ -7,6 +7,9 @@ enum IGMenuScreen{
 	option = 2
 }
 IGMenuScreen = IGMenuScreen.off
+
+InGameMenuCursor = 0
+
 #region 文字內容
 //語言
 LanguageOption[0] = "English"
@@ -106,6 +109,11 @@ optionArrow_H = sprite_get_height(sMenuArrowLeft)
 
 DrawOptionArrow_W = optionArrow_W * global.windowsSize
 DrawOptionArrow_H = optionArrow_H * global.windowsSize
+
+// 底線
+optionLineX1 = DrawOptionTextStart_X
+optionLineX2 = DrawOptionContentEND_X + DrawOptionArrow_W
+
 //全螢幕的框框
 DFSx1 = 403 * global.windowsSize
 DFSx2 = 429 * global.windowsSize
@@ -116,6 +124,9 @@ FSx1 = 403
 FSx2 = 429
 FSy1 = 104
 FSy2 = 130 
+
+
+optionCursor = 0
 #endregion
 
 

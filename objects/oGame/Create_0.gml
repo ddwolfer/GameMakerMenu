@@ -13,3 +13,9 @@ global.playingSave = 0
 
 FreezeControl = false
 FreezeMove = false
+FreezeMouse = false
+MouseChangeFlag = true
+window_set_cursor(cr_default)
+
+tempMouseX = mouse_x
+tempMouseY = mouse_y
